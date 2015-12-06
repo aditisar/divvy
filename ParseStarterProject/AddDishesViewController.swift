@@ -20,6 +20,7 @@ class AddDishesViewController: UIViewController, UITextFieldDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTextFieldsAndAddButton()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
         //dishCostTextField.delegate = self //TODO ask what this line is for
@@ -47,23 +48,32 @@ class AddDishesViewController: UIViewController, UITextFieldDelegate, UITableVie
         })
     }
     
+    func setupTextFieldsAndAddButton(){
+        
+    }
     
     @IBAction func addDishTapped(sender: AnyObject) {
         let conditions = true
         if (conditions == true) { //REPLACE WITH ACTUAL CONDITIONS TO MAKE SURE DISH IS PROPERLY ENTERED
             let dish = Dish(name: dishNameTextField.text!, cost: Double(dishCostTextField.text!)!)
             Meal.curMeal?.dishes.append(dish)
-            
+            print(Meal.curMeal?.dishes)
+            self.tableView.reloadData()
+            print("Table should have updated..")
         }
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (Meal.curMeal?.dishes.count)! //TODO REPLACE W DISHES ARRAY LENGHT
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("dishCell", forIndexPath: indexPath) as! UITableViewCell
-        cell.textLabel?.text = ["a","a","a"][indexPath.item] //TODO REPLACE WITH DISHES ARRAY
+        print("in tableview method")
+        print(Meal.curMeal?.dishes[indexPath.item].name)
+        cell.textLabel?.text = Meal.curMeal?.dishes[indexPath.item].name
         return cell
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5 //TODO REPLACE W DISHES ARRAY LENGHT
-    }
+
 }

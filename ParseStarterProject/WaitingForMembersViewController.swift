@@ -46,7 +46,7 @@ class WaitingForMembersViewController: UIViewController, UITableViewDataSource, 
             if (self.usernames.count > 0) {self.readyToBeginButton.enabled = true} //TODO Make 1 when finished debugging
         }
         joinedMemberCount.text = String(usernames.count) + " member(s) have joined your party"
-        print(usernames)
+        print("usernames",usernames)
         tableview.reloadData()
     }
     
@@ -62,6 +62,7 @@ class WaitingForMembersViewController: UIViewController, UITableViewDataSource, 
     }
     
     @IBAction func readyToBeginPressed(sender: AnyObject) {
+        timer!.invalidate() //stop the timer
         self.performSegueWithIdentifier("beginAddingDishes", sender: self)
     }
     
