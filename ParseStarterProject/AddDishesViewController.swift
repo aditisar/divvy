@@ -23,10 +23,6 @@ class AddDishesViewController: UIViewController, UITextFieldDelegate, UITableVie
         setupTextFieldsAndAddButton()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
-        //dishCostTextField.delegate = self //TODO ask what this line is for
-        dishCostTextField.keyboardType = UIKeyboardType.DecimalPad
-
-        //receiptImageView.contentMode = .ScaleAspectFit
         navigationItem.title = "Add Your Own Dishes"
         fetchImage()
     }
@@ -49,19 +45,41 @@ class AddDishesViewController: UIViewController, UITextFieldDelegate, UITableVie
     }
     
     func setupTextFieldsAndAddButton(){
-        
+        dishNameTextField.delegate = self //TODO ask what this line is for
+        dishCostTextField.delegate = self //TODO ask what this line is for
+        dishCostTextField.keyboardType = UIKeyboardType.DecimalPad
     }
     
+    func isDishValid() -> Bool{
+        if (dishNameTextField.text == ""){
+            return false
+        } else if (dishCostTextField.text == ""){
+            return false
+        }
+        return true
+    }
+    
+    
     @IBAction func addDishTapped(sender: AnyObject) {
-        let conditions = true
-        if (conditions == true) { //REPLACE WITH ACTUAL CONDITIONS TO MAKE SURE DISH IS PROPERLY ENTERED
-            let dish = Dish(name: dishNameTextField.text!, cost: Double(dishCostTextField.text!)!)
+        if (dishNameTextField.text != "" && dishCostTextField.text != ""){
+            //local
+            let dish = Dish(name: dishNameTextField.text!, cost: Double(dishCostTextField.text!)!, meal: (Meal.curMeal?.parseObject)!)
             Meal.curMeal?.dishes.append(dish)
-            print(Meal.curMeal?.dishes)
+            print("list of local dishes for cur meal", Meal.curMeal?.dishes)
             self.tableView.reloadData()
             print("Table should have updated..")
+            if let a = User.curUser {
+                print("not erroring on this")
+                dish.users.append(User.curUser!)
+            }
+
+            //parse
+            //don't need to do parse because it happens in dish init..
+            dishNameTextField.becomeFirstResponder()
+            
         }
     }
+    
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (Meal.curMeal?.dishes.count)! //TODO REPLACE W DISHES ARRAY LENGHT

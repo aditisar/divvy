@@ -605,7 +605,7 @@
         <!--Add Dishes View Controller-->
         <scene sceneID="u6i-05-Vc0">
             <objects>
-                <viewController id="dL8-Ug-nPz" customClass="AddDishesViewController" customModule="Divvy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="dL8-Ug-nPz" customClass="AddDishesViewController" customModule="Divvy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="X2Q-sR-pXQ"/>
                         <viewControllerLayoutGuide type="bottom" id="Zot-jS-gIX"/>
@@ -624,24 +624,24 @@
                                 </subviews>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstItem="K1A-RA-43E" firstAttribute="top" secondItem="FVh-Lc-PAr" secondAttribute="top" constant="43" id="2dp-gQ-qNZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="K1A-RA-43E" secondAttribute="bottom" constant="43" id="SIj-c6-QEx"/>
-                                    <constraint firstAttribute="trailing" secondItem="K1A-RA-43E" secondAttribute="trailing" constant="-14" id="ZnG-Sd-dMO"/>
-                                    <constraint firstItem="K1A-RA-43E" firstAttribute="centerY" secondItem="FVh-Lc-PAr" secondAttribute="centerY" id="f2d-L9-NQB"/>
-                                    <constraint firstItem="K1A-RA-43E" firstAttribute="width" secondItem="FVh-Lc-PAr" secondAttribute="width" id="sYG-Hl-gR5"/>
-                                    <constraint firstItem="K1A-RA-43E" firstAttribute="centerX" secondItem="FVh-Lc-PAr" secondAttribute="centerX" id="vZn-6b-F3y"/>
+                                    <constraint firstAttribute="bottom" secondItem="K1A-RA-43E" secondAttribute="bottom" id="10E-Uw-Ueq"/>
+                                    <constraint firstItem="K1A-RA-43E" firstAttribute="centerX" secondItem="FVh-Lc-PAr" secondAttribute="centerX" id="FQB-Cq-hZg"/>
+                                    <constraint firstItem="K1A-RA-43E" firstAttribute="trailing" secondItem="FVh-Lc-PAr" secondAttribute="trailing" id="Hrw-D7-y3B"/>
+                                    <constraint firstItem="K1A-RA-43E" firstAttribute="top" secondItem="FVh-Lc-PAr" secondAttribute="top" id="RNT-oO-Ozj"/>
+                                    <constraint firstItem="K1A-RA-43E" firstAttribute="leading" secondItem="FVh-Lc-PAr" secondAttribute="leading" id="i3e-re-zH3"/>
+                                    <constraint firstItem="K1A-RA-43E" firstAttribute="centerY" secondItem="FVh-Lc-PAr" secondAttribute="centerY" id="rDI-A4-eeb"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="K1A-RA-43E"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="2dp-gQ-qNZ"/>
-                                        <exclude reference="SIj-c6-QEx"/>
-                                        <exclude reference="ZnG-Sd-dMO"/>
-                                        <exclude reference="f2d-L9-NQB"/>
-                                        <exclude reference="sYG-Hl-gR5"/>
-                                        <exclude reference="vZn-6b-F3y"/>
+                                        <exclude reference="10E-Uw-Ueq"/>
+                                        <exclude reference="FQB-Cq-hZg"/>
+                                        <exclude reference="Hrw-D7-y3B"/>
+                                        <exclude reference="RNT-oO-Ozj"/>
+                                        <exclude reference="i3e-re-zH3"/>
+                                        <exclude reference="rDI-A4-eeb"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular">
@@ -649,12 +649,12 @@
                                         <include reference="K1A-RA-43E"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="2dp-gQ-qNZ"/>
-                                        <include reference="SIj-c6-QEx"/>
-                                        <include reference="ZnG-Sd-dMO"/>
-                                        <include reference="f2d-L9-NQB"/>
-                                        <include reference="sYG-Hl-gR5"/>
-                                        <include reference="vZn-6b-F3y"/>
+                                        <include reference="10E-Uw-Ueq"/>
+                                        <include reference="FQB-Cq-hZg"/>
+                                        <include reference="Hrw-D7-y3B"/>
+                                        <include reference="RNT-oO-Ozj"/>
+                                        <include reference="i3e-re-zH3"/>
+                                        <include reference="rDI-A4-eeb"/>
                                     </mask>
                                 </variation>
                             </scrollView>

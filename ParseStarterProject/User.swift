@@ -21,6 +21,7 @@ class User {
     var stage = 0;
     var payment = 0.0;
     var parseId: String?
+    var parseObject: PFObject?
     var meal: PFObject?
     var dishes: [Dish]
     
@@ -51,7 +52,6 @@ class User {
         }
         //if it has been saved before
         if let id = self.parseId {
-            print("heyo")
             parseUser["objectId"] = id
         }
         return parseUser
@@ -62,7 +62,11 @@ class User {
         parseUser.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
             print("User", self.username, "has been saved with id", parseUser.objectId! )
             self.parseId = parseUser.objectId!
+            self.parseObject = parseUser
             User.curUser = self;
+            if let meal = parseUser["parent"] {
+                Meal.curMeal?.parseObject = meal as! PFObject
+            }
         }
     }
     

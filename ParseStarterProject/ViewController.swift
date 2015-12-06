@@ -57,7 +57,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             //save both meal and leader to parse
             leader.saveToParse()
             User.curUser = leader
-            
             self.performSegueWithIdentifier("userCreatedParty", sender: self)
             
         } else {
