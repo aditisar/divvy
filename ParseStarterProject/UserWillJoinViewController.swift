@@ -37,7 +37,10 @@ class UserWillJoinViewController: UIViewController, UITextFieldDelegate{
                     print("Successfully retrieved \(meals!.count) meals.")
                     // Do something with the found objects
                     if let meals = meals {
-                        if (meals.count != 1) {//if there's more than one meal with this code
+                        if (meals.count == 0){
+                            print("No meal with this code..")
+                            //TODO alert user
+                        } else if (meals.count != 1) {//if there's more than one meal with this code
                             print("More than one meal with this code")
                         //TODO ensure this doesn't happen
                         } else {

@@ -9,18 +9,27 @@
 import Foundation
 import Parse
 
-class AddDishesViewController: UIViewController {
+class AddDishesViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var receiptImageView: UIImageView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        receiptImageView.contentMode = .ScaleAspectFit
-
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+        //receiptImageView.contentMode = .ScaleAspectFit
+        navigationItem.title = "Add Your Own Dishes"
         fetchImage()
     }
     
+    //Calls this function when the tap is recognized.
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
     
+    //fill imageview
     func fetchImage() {
         Meal.curMeal?.parseObject
         let imageFile: PFFile = (Meal.curMeal?.parseObject!["receipt"])! as! PFFile
@@ -30,9 +39,9 @@ class AddDishesViewController: UIViewController {
                 self.receiptImageView.image = image
             }
         })
-    
-        
     }
+    
+    
     
     
 }
