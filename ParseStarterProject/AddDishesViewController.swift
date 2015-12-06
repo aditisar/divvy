@@ -35,7 +35,7 @@ class AddDishesViewController: UIViewController, UITextFieldDelegate, UITableVie
     //fill imageview
     func fetchImage() {
         Meal.curMeal?.parseObject
-        let imageFile: PFFile = (Meal.curMeal?.parseObject!["receipt"])! as! PFFile
+        let imageFile: PFFile = (Meal.curMeal?.parseObject["receipt"])! as! PFFile
         imageFile.getDataInBackgroundWithBlock({(result: NSData?, error: NSError?) -> Void in
             if (error == nil) {
                 let image: UIImage = UIImage(data: result!)!
@@ -68,10 +68,8 @@ class AddDishesViewController: UIViewController, UITextFieldDelegate, UITableVie
             print("list of local dishes for cur meal", Meal.curMeal?.dishes)
             self.tableView.reloadData()
             print("Table should have updated..")
-            if let a = User.curUser {
-                print("not erroring on this")
-                dish.users.append(User.curUser!)
-            }
+            dish.users.append(User.curUser!)
+            
 
             //parse
             //don't need to do parse because it happens in dish init..

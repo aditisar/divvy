@@ -36,7 +36,7 @@ class WaitingForMembersViewController: UIViewController, UITableViewDataSource, 
     //updates usernames variable with list of people
     func getUsernames(){
         let query = PFQuery(className: "User")
-        query.whereKey("parent", equalTo: (Meal.curMeal!.parseObject)!)
+        query.whereKey("parent", equalTo: (Meal.curMeal!.parseObject))
         query.findObjectsInBackgroundWithBlock {
             (users: [PFObject]?, error: NSError?) -> Void in
             self.usernames.removeAll()
@@ -49,6 +49,7 @@ class WaitingForMembersViewController: UIViewController, UITableViewDataSource, 
         print("usernames",usernames)
         tableview.reloadData()
     }
+
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return usernames.count
@@ -61,8 +62,9 @@ class WaitingForMembersViewController: UIViewController, UITableViewDataSource, 
         return cell
     }
     
-    @IBAction func readyToBeginPressed(sender: AnyObject) {
+    @IBAction func readyToBeginPressed(sender: UIButton) {
         timer!.invalidate() //stop the timer
+        print("timer should be stopped")
         self.performSegueWithIdentifier("beginAddingDishes", sender: self)
     }
     

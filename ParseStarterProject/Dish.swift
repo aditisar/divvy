@@ -39,16 +39,10 @@ class Dish {
         self.saveToParse()
     }
 
-    //saves to parse, is only used to be called in init
     
     
     //updates parse object with local properties, should only be called after dish has been saved once
     func updateDishParseObjectFromLocal(){
-        if let a = self.parseId {
-            print("aint erroring on this either")
-        }
-        sleep(15)
-
         let query = PFQuery(className:"Dish")
         query.getObjectInBackgroundWithId(self.parseId!) {
             (parseDish: PFObject?, error: NSError?) -> Void in
@@ -93,6 +87,7 @@ class Dish {
     
     private
     
+    //saves to parse, is only used to be called in init
     func saveToParse() {
         self.parseObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
             print("Dish has been saved with id", self.parseObject.objectId! )

@@ -69,8 +69,8 @@ class UploadReceiptViewController: UIViewController, UIImagePickerControllerDele
         let imageFile = PFFile(name:"image.jpeg", data:imageData!)
 
 
-        Meal.curMeal!.parseObject!["receipt"] = imageFile
-        Meal.curMeal!.parseObject!.saveInBackground()
+        Meal.curMeal!.parseObject["receipt"] = imageFile
+        Meal.curMeal!.parseObject.saveInBackground()
         performSegueWithIdentifier("receiptUploaded", sender: self)
     }
     

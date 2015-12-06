@@ -52,8 +52,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             let name = username.text!
             let leader: User = User(username: name)
             leader.isLeader = true
-            leader.meal = meal.convertToPFObject()
-            meal.parseObject = leader.meal
+            leader.meal = Meal.curMeal?.parseObject
             //save both meal and leader to parse
             leader.saveToParse()
             User.curUser = leader
