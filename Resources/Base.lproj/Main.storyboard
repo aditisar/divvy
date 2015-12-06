@@ -496,33 +496,11 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Jca-0g-SBl">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="usernameCell" id="Jca-0g-SBl">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jca-0g-SBl" id="Lix-F7-2fR">
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="aditi (you)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMc-27-2uA">
-                                                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                                    <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular" fixedFrame="YES">
-                                                        <rect key="frame" x="30" y="8" width="570" height="27.5"/>
-                                                    </variation>
-                                                </label>
-                                            </subviews>
                                             <animations/>
-                                            <variation key="default">
-                                                <mask key="subviews">
-                                                    <exclude reference="lMc-27-2uA"/>
-                                                </mask>
-                                            </variation>
-                                            <variation key="heightClass=regular">
-                                                <mask key="subviews">
-                                                    <include reference="lMc-27-2uA"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
@@ -530,6 +508,10 @@
                                 <variation key="heightClass=regular" misplaced="YES">
                                     <rect key="frame" x="0.0" y="323" width="600" height="376"/>
                                 </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="0Ul-kn-MNr" id="JmU-Z8-8en"/>
+                                    <outlet property="delegate" destination="0Ul-kn-MNr" id="Pmr-32-UM6"/>
+                                </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group code:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6Z-R8-t5w">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -608,6 +590,7 @@
                     <connections>
                         <outlet property="groupCode" destination="yN1-ra-mQ4" id="otI-0A-oik"/>
                         <outlet property="joinedMemberCount" destination="6QB-nC-o6J" id="DB5-1P-n3W"/>
+                        <outlet property="tableview" destination="VzH-wE-LiX" id="AzN-dW-NDa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jYE-XK-pa6" userLabel="First Responder" sceneMemberID="firstResponder"/>
