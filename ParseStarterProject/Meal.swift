@@ -16,10 +16,11 @@ class Meal {
     var groupCode: String
     var members: [User]
     var parseId: String?;
+    var parseObject: PFObject?
     var open = true
     
-    init() {
-        groupCode = Meal.generateGroupCode()
+    init(groupCode: String) {
+        self.groupCode = groupCode
         members = [User]()
     }
     
@@ -45,6 +46,39 @@ class Meal {
             self.parseId = parseMeal.objectId!
             Meal.curMeal = self;
         }
+    }
+    
+    //update the parse object with key val pair, need id for this method
+    func updateParseObject(key: String, val: AnyObject) {
+        let query = PFQuery(className:"Meal")
+        query.getObjectInBackgroundWithId(self.parseId!) {
+            (parseMeal: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                print(error)
+            } else if let parseMeal = parseMeal {
+                parseMeal[key] = val
+                parseMeal.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+                    print("Meal has been updated with", key,":", val)
+                }
+            }
+        }
+    }
+
+    func getUsernames() -> [String]{
+        var usernames = [String]()
+        let query = PFQuery(className: "User")
+        query.whereKey("parent", equalTo: (parseObject)!)
+        query.findObjectsInBackgroundWithBlock {
+            (users: [PFObject]?, error: NSError?) -> Void in
+            for user in users! {
+                print("got a user", user.objectId)
+                print("got a user", user["username"])
+                usernames.append(user["username"] as! String)
+            }
+            
+        }
+        print("out of for", usernames)
+        return usernames
     }
     
 }

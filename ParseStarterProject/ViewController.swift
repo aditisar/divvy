@@ -39,7 +39,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if username.text!.characters.count > 0 {
             
             //make a meal
-            let meal = Meal()
+            let meal = Meal(groupCode: Meal.generateGroupCode())
             Meal.curMeal = meal
             
             //make a user that is a leader
@@ -47,6 +47,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             let leader: User = User(username: name)
             leader.isLeader = true
             leader.meal = meal.convertToPFObject()
+            meal.parseObject = leader.meal
             //save both meal and leader to parse
             leader.saveToParse()
             User.curUser = leader

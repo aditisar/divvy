@@ -454,10 +454,10 @@
             </objects>
             <point key="canvasLocation" x="1032" y="64.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Waiting For Members View Controller-->
         <scene sceneID="bUw-fO-Ehd">
             <objects>
-                <viewController id="0Ul-kn-MNr" sceneMemberID="viewController">
+                <viewController id="0Ul-kn-MNr" customClass="WaitingForMembersViewController" customModule="Divvy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uQE-xk-C3I"/>
                         <viewControllerLayoutGuide type="bottom" id="obR-Bg-ZvV"/>
@@ -496,27 +496,33 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="xFo-T3-h7C">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Jca-0g-SBl">
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xFo-T3-h7C" id="4yg-Mv-wBC">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jca-0g-SBl" id="Lix-F7-2fR">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="aditi (you)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMc-27-2uA">
+                                                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular" fixedFrame="YES">
+                                                        <rect key="frame" x="30" y="8" width="570" height="27.5"/>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
                                             <animations/>
-                                        </tableViewCellContentView>
-                                        <animations/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="rba-C2-JCr">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rba-C2-JCr" id="WCD-ez-FfB">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <animations/>
-                                        </tableViewCellContentView>
-                                        <animations/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ZvR-DG-mPp">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZvR-DG-mPp" id="l8g-Rb-CVF">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <animations/>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="lMc-27-2uA"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular">
+                                                <mask key="subviews">
+                                                    <include reference="lMc-27-2uA"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
@@ -599,6 +605,10 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="groupCode" destination="yN1-ra-mQ4" id="otI-0A-oik"/>
+                        <outlet property="joinedMemberCount" destination="6QB-nC-o6J" id="DB5-1P-n3W"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jYE-XK-pa6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -606,6 +616,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="b76-SL-F3P"/>
+        <segue reference="ixg-Sg-wUz"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -65,6 +65,12 @@ class UploadReceiptViewController: UIViewController, UIImagePickerControllerDele
     }
     
     @IBAction func nextPressed(sender: AnyObject) {
+        let imageData = UIImageJPEGRepresentation(currentImage.image!, 0.2)
+        let imageFile = PFFile(name:"image.jpeg", data:imageData!)
+
+//        let imageFile:PFFile = PFFile(data: UIImagePNGRepresentation(currentImage.image!, 0.2)!)!
+        Meal.curMeal!.parseObject!["receipt"] = imageFile
+        Meal.curMeal!.parseObject!.saveInBackground()
         performSegueWithIdentifier("receiptUploaded", sender: self)
     }
     
