@@ -15,6 +15,7 @@ class Meal {
     
     var groupCode: String
     var members: [User]
+    var dishes: [Dish]
     var parseId: String?;
     var parseObject: PFObject?
     var open = true
@@ -22,6 +23,7 @@ class Meal {
     init(groupCode: String) {
         self.groupCode = groupCode
         members = [User]()
+        dishes = [Dish]()
     }
     
     static func generateGroupCode() -> String {

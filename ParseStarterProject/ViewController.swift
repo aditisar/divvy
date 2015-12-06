@@ -16,6 +16,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.username.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -62,7 +63,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    
     @IBAction func joinGroupPressed(sender: AnyObject) {
         if username.text!.characters.count > 0 {
             //make a user that is a follower
@@ -75,5 +75,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        username.resignFirstResponder()
+        self.view.endEditing(true)
+        return false
+    }
+    
     
 }

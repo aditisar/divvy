@@ -22,6 +22,8 @@ class User {
     var payment = 0.0;
     var parseId: String?
     var meal: PFObject?
+    var dishes: [Dish]
+    
     
     init(username: String) {
         
@@ -29,6 +31,9 @@ class User {
         self.isLeader = false
         self.stage = User.UserJoining
         self.payment = 0.0
+        
+        dishes = [Dish]()
+
         
     }
     
