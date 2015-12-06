@@ -20,7 +20,6 @@ class Meal {
     var dishes: [Dish]
     var parseId: String?;
     var parseObject: PFObject
-    var open = true
     var stage = 0
     
     init(groupCode: String) {
@@ -29,37 +28,40 @@ class Meal {
         members = [User]()
         dishes = [Dish]()
         
-        //create a parse version
+        //if leader create a parse version
+        
         let parseMeal = PFObject(className: "Meal")
         parseMeal["groupCode"] = self.groupCode
+        parseMeal["stage"] = self.stage
         self.parseObject = parseMeal
-        self.saveToParse()
 
+        
     }
     
     static func generateGroupCode() -> String {
         return String(Int(arc4random_uniform(9000)) + 1000)
     }
-//    
-//    func convertToPFObject() -> PFObject {
-//        let parseMeal = PFObject(className: "Meal")
-//        parseMeal["groupCode"] = self.groupCode
-//        parseMeal["open"] = self.open
-//        //if meal has been saved before
-//        if let id = self.parseId {
-//            parseMeal["objectId"] = id
-//        }
-//        return parseMeal
-//    }
-    
-//    func saveToParse() {
-//        let parseMeal = self.convertToPFObject()
-//        parseMeal.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-//            print("Meal", "has been saved with id", parseMeal.objectId! )
-//            self.parseId = parseMeal.objectId!
-//            Meal.curMeal = self;
-//        }
-//    }
+
+    //updates cloud object with local properties, should only be called after dish has been saved once
+    func updateMealParseObjectFromLocal() {
+        let query = PFQuery(className: "Meal")
+        query.getObjectInBackgroundWithId(self.parseId!) {
+            (parseMeal: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                print(error)
+                print("no such meal with that id")
+            } else if let parseMeal = parseMeal {
+                parseMeal["groupCode"] = self.groupCode
+                parseMeal["stage"] = self.stage
+                self.parseObject = parseMeal
+                parseMeal.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+                    print("Cloud Meal has been updated to match local version.")
+                }
+            }
+        }
+
+        
+    }
     
     //update the parse object with key val pair, need id to be previously stored for this method
     func updateParseObject(key: String, val: AnyObject) {
@@ -94,11 +96,11 @@ class Meal {
         return usernames
     }
     
-    private
+    
     
     func saveToParse() {
         self.parseObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-            print("Meal", "has been saved with id", self.parseObject.objectId! )
+            print("Meal has been saved with id", self.parseObject.objectId! )
             self.parseId = self.parseObject.objectId!
             Meal.curMeal = self;
         }

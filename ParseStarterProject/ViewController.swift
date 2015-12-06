@@ -46,7 +46,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             //make a meal
             let meal = Meal(groupCode: Meal.generateGroupCode())
+            meal.saveToParse()
             Meal.curMeal = meal
+            
             
             //make a user that is a leader
             let name = username.text!
