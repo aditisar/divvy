@@ -17,6 +17,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.username.delegate = self
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -25,6 +26,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
     //hide the nav bar on this page
     override func viewWillDisappear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: animated);
