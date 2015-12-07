@@ -604,28 +604,6 @@
             </objects>
             <point key="canvasLocation" x="1814" y="468"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Nde-MR-e39">
-            <objects>
-                <viewController id="Oh8-jg-Cjz" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Sp9-bg-0fM"/>
-                        <viewControllerLayoutGuide type="bottom" id="B6W-AO-OCH"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="eek-3u-bg4">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <segue destination="4CA-fY-SrS" kind="show" id="FjQ-uM-p1P"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aPJ-4C-XGT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3295" y="165"/>
-        </scene>
         <!--Tax Tip View Controller-->
         <scene sceneID="g7z-XM-jDn">
             <objects>
@@ -787,10 +765,13 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="pGj-Yb-qKy" kind="show" id="URu-b2-qJQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G1y-df-oLr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4769" y="468"/>
+            <point key="canvasLocation" x="4781" y="492"/>
         </scene>
         <!--Add Dishes View Controller-->
         <scene sceneID="phu-36-dP2">
@@ -894,6 +875,9 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Continue"/>
+                                <connections>
+                                    <action selector="ownDishesContinueButtonTapped:" destination="68K-oe-m6G" eventType="touchUpInside" id="KEc-dp-XtA"/>
+                                </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="5" translatesAutoresizingMaskIntoConstraints="NO" id="Td6-WM-0Oa">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -941,7 +925,8 @@
                                         <exclude reference="sIt-nf-qCD"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular">
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="64" width="600" height="301"/>
                                     <mask key="subviews">
                                         <include reference="fEz-7L-QkO"/>
                                     </mask>
@@ -1050,8 +1035,8 @@
                         <outlet property="receiptImageView" destination="fEz-7L-QkO" id="etx-hW-4cZ"/>
                         <outlet property="scrollView" destination="Td6-WM-0Oa" id="he5-Bx-gxV"/>
                         <outlet property="tableView" destination="YQM-oD-aW7" id="UEh-Dv-guI"/>
-                        <segue destination="Oh8-jg-Cjz" kind="show" id="UJp-2i-ZcX"/>
                         <segue destination="asl-Eg-bKM" kind="show" id="0Qd-W0-hX3"/>
+                        <segue destination="uqj-tc-WmS" kind="show" identifier="leaderFinishedAddingDishes" id="ufX-Qc-maB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Zc-4F-fcU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1079,9 +1064,281 @@
             </objects>
             <point key="canvasLocation" x="3295" y="870.75"/>
         </scene>
+        <!--Add Dishes View Controller-->
+        <scene sceneID="dSV-lN-Km3">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="uqj-tc-WmS" customClass="AddDishesViewController" customModule="Divvy" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OsP-7K-1Ch"/>
+                        <viewControllerLayoutGuide type="bottom" id="9Yq-Fo-dA3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RpK-gW-ODn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S4s-R6-7Mo">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$ 0.00" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wja-VZ-MA2">
+                                        <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Dish name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j3c-YM-Vek">
+                                        <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="0.53840266049999996" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="j3c-YM-Vek" firstAttribute="leading" secondItem="S4s-R6-7Mo" secondAttribute="leading" constant="27" id="EiE-s7-gWf">
+                                        <variation key="heightClass=regular" constant="20"/>
+                                    </constraint>
+                                    <constraint firstItem="Wja-VZ-MA2" firstAttribute="leading" secondItem="j3c-YM-Vek" secondAttribute="trailing" constant="29" id="Eo0-Wt-bUQ">
+                                        <variation key="heightClass=regular" constant="10"/>
+                                    </constraint>
+                                    <constraint firstItem="Wja-VZ-MA2" firstAttribute="centerY" secondItem="S4s-R6-7Mo" secondAttribute="centerY" id="LCx-E2-3Gh"/>
+                                    <constraint firstAttribute="height" constant="70" id="Nkb-wv-6yN"/>
+                                    <constraint firstItem="j3c-YM-Vek" firstAttribute="centerY" secondItem="S4s-R6-7Mo" secondAttribute="centerY" id="nLa-Fk-YiU"/>
+                                    <constraint firstItem="j3c-YM-Vek" firstAttribute="width" secondItem="S4s-R6-7Mo" secondAttribute="width" multiplier="0.6" id="zqI-t4-y68" userLabel="ex. spaghetti.width = width * .6"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="Wja-VZ-MA2"/>
+                                        <exclude reference="j3c-YM-Vek"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="Nkb-wv-6yN"/>
+                                        <exclude reference="nLa-Fk-YiU"/>
+                                        <exclude reference="EiE-s7-gWf"/>
+                                        <exclude reference="zqI-t4-y68"/>
+                                        <exclude reference="LCx-E2-3Gh"/>
+                                        <exclude reference="Eo0-Wt-bUQ"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular">
+                                    <mask key="subviews">
+                                        <include reference="Wja-VZ-MA2"/>
+                                        <include reference="j3c-YM-Vek"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="Nkb-wv-6yN"/>
+                                        <include reference="nLa-Fk-YiU"/>
+                                        <include reference="EiE-s7-gWf"/>
+                                        <include reference="zqI-t4-y68"/>
+                                        <include reference="LCx-E2-3Gh"/>
+                                        <include reference="Eo0-Wt-bUQ"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eTy-Mb-CvS">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dishCell" id="ujG-lD-Fij">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ujG-lD-Fij" id="eUe-Gd-Xys">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <connections>
+                                            <segue destination="4CA-fY-SrS" kind="show" identifier="leaderFinishedAddingSharedDishes" id="lYt-a8-FoB"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="uqj-tc-WmS" id="ncd-uf-2mG"/>
+                                    <outlet property="delegate" destination="uqj-tc-WmS" id="R50-qZ-VIa"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBS-jn-TiF">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <animations/>
+                                <connections>
+                                    <action selector="addDishTapped:" destination="uqj-tc-WmS" eventType="touchUpInside" id="Ztl-da-XSo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="po6-g9-cRx">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Continue"/>
+                                <connections>
+                                    <action selector="sharedDishesContinueButtonTapped:" destination="uqj-tc-WmS" eventType="touchUpInside" id="bva-Fn-upt"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="5" translatesAutoresizingMaskIntoConstraints="NO" id="M2u-4K-4G7">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mUL-Io-PnO">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="400" id="6Oy-wB-qoi"/>
+                                            <constraint firstAttribute="height" constant="128" id="nAe-L4-LnV"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="nAe-L4-LnV"/>
+                                                <exclude reference="6Oy-wB-qoi"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="nAe-L4-LnV"/>
+                                                <include reference="6Oy-wB-qoi"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                </subviews>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstItem="mUL-Io-PnO" firstAttribute="trailing" secondItem="M2u-4K-4G7" secondAttribute="trailing" constant="20" id="9J4-3h-PI7">
+                                        <variation key="heightClass=regular" constant="20"/>
+                                    </constraint>
+                                    <constraint firstItem="mUL-Io-PnO" firstAttribute="bottom" secondItem="M2u-4K-4G7" secondAttribute="bottom" id="XYX-39-uDO">
+                                        <variation key="heightClass=regular" constant="0.0"/>
+                                    </constraint>
+                                    <constraint firstItem="mUL-Io-PnO" firstAttribute="top" secondItem="M2u-4K-4G7" secondAttribute="top" constant="30" id="n2P-hx-yAL"/>
+                                    <constraint firstItem="mUL-Io-PnO" firstAttribute="leading" secondItem="M2u-4K-4G7" secondAttribute="leading" constant="20" id="okL-oJ-E10"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="mUL-Io-PnO"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="XYX-39-uDO"/>
+                                        <exclude reference="okL-oJ-E10"/>
+                                        <exclude reference="9J4-3h-PI7"/>
+                                        <exclude reference="n2P-hx-yAL"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="64" width="600" height="301"/>
+                                    <mask key="subviews">
+                                        <include reference="mUL-Io-PnO"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="XYX-39-uDO"/>
+                                        <include reference="okL-oJ-E10"/>
+                                        <include reference="9J4-3h-PI7"/>
+                                        <include reference="n2P-hx-yAL"/>
+                                    </mask>
+                                </variation>
+                            </scrollView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="M2u-4K-4G7" firstAttribute="top" secondItem="OsP-7K-1Ch" secondAttribute="bottom" id="11K-e7-etu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="M2u-4K-4G7" secondAttribute="trailing" constant="-20" id="2HE-nX-AUb" userLabel="trailingMargin = Scroll View.trailing"/>
+                            <constraint firstItem="po6-g9-cRx" firstAttribute="top" secondItem="eTy-Mb-CvS" secondAttribute="bottom" constant="25" id="4ec-fh-vcx"/>
+                            <constraint firstItem="fBS-jn-TiF" firstAttribute="centerY" secondItem="S4s-R6-7Mo" secondAttribute="centerY" id="6ss-hK-VMy"/>
+                            <constraint firstItem="S4s-R6-7Mo" firstAttribute="top" secondItem="M2u-4K-4G7" secondAttribute="bottom" id="A4B-GI-pQz"/>
+                            <constraint firstItem="9Yq-Fo-dA3" firstAttribute="top" secondItem="po6-g9-cRx" secondAttribute="bottom" constant="8" id="Imo-oC-KFZ">
+                                <variation key="heightClass=regular" constant="20"/>
+                            </constraint>
+                            <constraint firstItem="eTy-Mb-CvS" firstAttribute="width" secondItem="RpK-gW-ODn" secondAttribute="width" id="SN6-p4-HOp"/>
+                            <constraint firstItem="S4s-R6-7Mo" firstAttribute="centerY" secondItem="RpK-gW-ODn" secondAttribute="centerY" id="SaB-3n-zME"/>
+                            <constraint firstItem="fBS-jn-TiF" firstAttribute="leading" secondItem="S4s-R6-7Mo" secondAttribute="trailing" constant="-42" id="U5M-59-KON"/>
+                            <constraint firstItem="S4s-R6-7Mo" firstAttribute="centerX" secondItem="RpK-gW-ODn" secondAttribute="centerX" id="VLI-wI-pEu"/>
+                            <constraint firstItem="po6-g9-cRx" firstAttribute="centerX" secondItem="RpK-gW-ODn" secondAttribute="centerX" id="WA8-u8-GQc"/>
+                            <constraint firstItem="S4s-R6-7Mo" firstAttribute="leading" secondItem="RpK-gW-ODn" secondAttribute="leadingMargin" constant="-20" id="YAT-Rf-Php"/>
+                            <constraint firstItem="eTy-Mb-CvS" firstAttribute="centerX" secondItem="RpK-gW-ODn" secondAttribute="centerX" id="csn-Kn-LcL"/>
+                            <constraint firstItem="fBS-jn-TiF" firstAttribute="leading" secondItem="Wja-VZ-MA2" secondAttribute="trailing" constant="19" id="hMZ-h9-jBZ">
+                                <variation key="heightClass=regular" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="eTy-Mb-CvS" firstAttribute="top" secondItem="S4s-R6-7Mo" secondAttribute="bottom" constant="17" id="p1h-8a-qC4"/>
+                            <constraint firstItem="M2u-4K-4G7" firstAttribute="centerX" secondItem="eTy-Mb-CvS" secondAttribute="centerX" id="wSF-iK-CP8"/>
+                            <constraint firstItem="M2u-4K-4G7" firstAttribute="leading" secondItem="RpK-gW-ODn" secondAttribute="leadingMargin" constant="-20" id="wXe-4X-xCz" userLabel="Scroll View.leading = leadingMargin"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="S4s-R6-7Mo" secondAttribute="trailing" constant="-20" id="y9O-kg-OPD"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="S4s-R6-7Mo"/>
+                                <exclude reference="eTy-Mb-CvS"/>
+                                <exclude reference="fBS-jn-TiF"/>
+                                <exclude reference="po6-g9-cRx"/>
+                                <exclude reference="M2u-4K-4G7"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Imo-oC-KFZ"/>
+                                <exclude reference="hMZ-h9-jBZ"/>
+                                <exclude reference="6ss-hK-VMy"/>
+                                <exclude reference="U5M-59-KON"/>
+                                <exclude reference="WA8-u8-GQc"/>
+                                <exclude reference="4ec-fh-vcx"/>
+                                <exclude reference="VLI-wI-pEu"/>
+                                <exclude reference="SaB-3n-zME"/>
+                                <exclude reference="A4B-GI-pQz"/>
+                                <exclude reference="y9O-kg-OPD"/>
+                                <exclude reference="YAT-Rf-Php"/>
+                                <exclude reference="wXe-4X-xCz"/>
+                                <exclude reference="11K-e7-etu"/>
+                                <exclude reference="wSF-iK-CP8"/>
+                                <exclude reference="2HE-nX-AUb"/>
+                                <exclude reference="p1h-8a-qC4"/>
+                                <exclude reference="SN6-p4-HOp"/>
+                                <exclude reference="csn-Kn-LcL"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular">
+                            <mask key="subviews">
+                                <include reference="S4s-R6-7Mo"/>
+                                <include reference="eTy-Mb-CvS"/>
+                                <include reference="fBS-jn-TiF"/>
+                                <include reference="po6-g9-cRx"/>
+                                <include reference="M2u-4K-4G7"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Imo-oC-KFZ"/>
+                                <include reference="hMZ-h9-jBZ"/>
+                                <include reference="6ss-hK-VMy"/>
+                                <include reference="U5M-59-KON"/>
+                                <include reference="WA8-u8-GQc"/>
+                                <include reference="4ec-fh-vcx"/>
+                                <include reference="VLI-wI-pEu"/>
+                                <include reference="SaB-3n-zME"/>
+                                <include reference="A4B-GI-pQz"/>
+                                <include reference="y9O-kg-OPD"/>
+                                <include reference="YAT-Rf-Php"/>
+                                <include reference="wXe-4X-xCz"/>
+                                <include reference="11K-e7-etu"/>
+                                <include reference="wSF-iK-CP8"/>
+                                <include reference="2HE-nX-AUb"/>
+                                <include reference="p1h-8a-qC4"/>
+                                <include reference="SN6-p4-HOp"/>
+                                <include reference="csn-Kn-LcL"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="addDishButton" destination="fBS-jn-TiF" id="M2d-cz-ADl"/>
+                        <outlet property="dishCostTextField" destination="Wja-VZ-MA2" id="CMD-EL-NIh"/>
+                        <outlet property="dishNameTextField" destination="j3c-YM-Vek" id="9cr-eO-ljE"/>
+                        <outlet property="imageConstraintBottom" destination="XYX-39-uDO" id="f8m-HV-HyW"/>
+                        <outlet property="imageConstraintLeft" destination="okL-oJ-E10" id="Qj5-Sw-ScI"/>
+                        <outlet property="imageConstraintRight" destination="9J4-3h-PI7" id="GeA-bN-WsI"/>
+                        <outlet property="imageConstraintTop" destination="n2P-hx-yAL" id="JIh-ZE-Ylv"/>
+                        <outlet property="receiptImageView" destination="mUL-Io-PnO" id="F0g-jK-p1g"/>
+                        <outlet property="scrollView" destination="M2u-4K-4G7" id="pvQ-EG-cVr"/>
+                        <outlet property="tableView" destination="eTy-Mb-CvS" id="Rre-B7-pHV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qSe-MT-tun" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3301" y="165"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="URu-b2-qJQ"/>
+        <segue reference="9to-Bp-xZq"/>
         <segue reference="ixg-Sg-wUz"/>
-        <segue reference="eSA-Pm-Zr1"/>
     </inferredMetricsTieBreakers>
 </document>

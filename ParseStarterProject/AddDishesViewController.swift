@@ -21,7 +21,6 @@ class AddDishesViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         super.viewDidLoad()
         scrollView.delegate = self
         updateZoom()
-
         setupTextFieldsAndAddButton()
         receiptImageView.contentMode = .ScaleAspectFit
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
@@ -35,7 +34,7 @@ class AddDishesViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         view.endEditing(true)
     }
     
-    //fill imageview
+    //fill imageview //TODO maybe move to meal model
     func fetchImage() {
         Meal.curMeal?.parseObject
         let imageFile: PFFile = (Meal.curMeal?.parseObject["receipt"])! as! PFFile
@@ -81,6 +80,15 @@ class AddDishesViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         }
     }
     
+    @IBAction func ownDishesContinueButtonTapped(sender: AnyObject) {
+        performSegueWithIdentifier("leaderFinishedAddingDishes", sender: self)
+        
+    }
+    
+    @IBAction func sharedDishesContinueButtonTapped(sender: AnyObject) {
+        performSegueWithIdentifier("leaderFinishedAddingSharedDishes", sender: self)
+
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (Meal.curMeal?.dishes.count)! //TODO REPLACE W DISHES ARRAY LENGHT
@@ -96,7 +104,8 @@ class AddDishesViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     }
     
     
-//   below is  not written by me, from https://github.com/evgenyneu/ios-imagescroll-swift to allow scrolling in the image
+// ***************************************************************************************************
+// below is  not written by me, from https://github.com/evgenyneu/ios-imagescroll-swift to allow scrolling in for the receipt image
     
     @IBOutlet weak var receiptImageView: UIImageView!
     
@@ -162,7 +171,6 @@ class AddDishesViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     
     // Zoom to show as much image as possible unless image is smaller than the scroll view
     private func updateZoom() {
-        print("in zoom")
         if let image = receiptImageView.image {
             var minZoom = min(scrollView.bounds.size.width / image.size.width,
                 scrollView.bounds.size.height / image.size.height)
@@ -191,6 +199,7 @@ class AddDishesViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         return receiptImageView
     }
 
+// ***********************************************************************************************************
     
 
 }
