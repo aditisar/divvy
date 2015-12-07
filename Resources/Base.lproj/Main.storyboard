@@ -635,7 +635,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="Td6-WM-0Oa">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="5" translatesAutoresizingMaskIntoConstraints="NO" id="Td6-WM-0Oa">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fEz-7L-QkO">
@@ -664,11 +664,11 @@
                                     <constraint firstItem="fEz-7L-QkO" firstAttribute="bottom" secondItem="Td6-WM-0Oa" secondAttribute="bottom" constant="94" id="FA2-J8-zTi">
                                         <variation key="heightClass=regular" constant="-94"/>
                                     </constraint>
-                                    <constraint firstItem="fEz-7L-QkO" firstAttribute="leading" secondItem="Td6-WM-0Oa" secondAttribute="leading" constant="199" id="WhW-2v-VGe"/>
-                                    <constraint firstItem="fEz-7L-QkO" firstAttribute="trailing" secondItem="Td6-WM-0Oa" secondAttribute="trailing" constant="161" id="Y2y-sP-0Ao">
-                                        <variation key="heightClass=regular" constant="-161"/>
+                                    <constraint firstItem="fEz-7L-QkO" firstAttribute="leading" secondItem="Td6-WM-0Oa" secondAttribute="leading" constant="20" id="WhW-2v-VGe"/>
+                                    <constraint firstItem="fEz-7L-QkO" firstAttribute="trailing" secondItem="Td6-WM-0Oa" secondAttribute="trailing" constant="20" id="Y2y-sP-0Ao">
+                                        <variation key="heightClass=regular" constant="20"/>
                                     </constraint>
-                                    <constraint firstItem="fEz-7L-QkO" firstAttribute="top" secondItem="Td6-WM-0Oa" secondAttribute="top" constant="123" id="sIt-nf-qCD"/>
+                                    <constraint firstItem="fEz-7L-QkO" firstAttribute="top" secondItem="Td6-WM-0Oa" secondAttribute="top" constant="30" id="sIt-nf-qCD"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
@@ -681,8 +681,7 @@
                                         <exclude reference="sIt-nf-qCD"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="20" width="600" height="345"/>
+                                <variation key="heightClass=regular">
                                     <mask key="subviews">
                                         <include reference="fEz-7L-QkO"/>
                                     </mask>

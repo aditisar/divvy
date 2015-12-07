@@ -23,7 +23,7 @@ class AddDishesViewController: UIViewController, UITextFieldDelegate, UITableVie
         updateZoom()
 
         setupTextFieldsAndAddButton()
-//        receiptImageView.contentMode = .ScaleAspectFit
+        receiptImageView.contentMode = .ScaleAspectFit
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
         navigationItem.title = "Add Your Own Dishes"
