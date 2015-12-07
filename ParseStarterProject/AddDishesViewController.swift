@@ -9,7 +9,7 @@
 import Foundation
 import Parse
 
-class AddDishesViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
+class AddDishesViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate{
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var addDishButton: UIButton!
@@ -87,6 +87,7 @@ class AddDishesViewController: UIViewController, UITextFieldDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    
         let cell = tableView.dequeueReusableCellWithIdentifier("dishCell", forIndexPath: indexPath) as! UITableViewCell
         print("in tableview method")
         print(Meal.curMeal?.dishes[indexPath.item].name)
@@ -95,7 +96,7 @@ class AddDishesViewController: UIViewController, UITextFieldDelegate, UITableVie
     }
     
     
-//    https://github.com/evgenyneu/ios-imagescroll-swift
+//   below is  not written by me, from https://github.com/evgenyneu/ios-imagescroll-swift to allow scrolling in the image
     
     @IBOutlet weak var receiptImageView: UIImageView!
     
