@@ -87,10 +87,10 @@ class WaitingForMembersViewController: UIViewController, UITableViewDataSource, 
         getUsernamesTimer!.invalidate() //stop the usernames timer
         if let _ = checkMealStageTimer {
             checkMealStageTimer!.invalidate() //stop the stage timer if it was instantiated in the first place
+        } else { //if the leader physically pressed it
+            Meal.curMeal?.updateParseObject("stage", val: Meal.BeginAddingDishes)
         }
-        //if this button is pressed, programatically or otherwise, that means the group leader pushed it, so it is ok to change the meal state
         Meal.curMeal?.stage = Meal.BeginAddingDishes // 1
-        Meal.curMeal?.updateParseObject("stage", val: Meal.BeginAddingDishes)
         self.performSegueWithIdentifier("beginAddingDishes", sender: self)
     }
     

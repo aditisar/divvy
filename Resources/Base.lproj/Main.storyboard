@@ -618,10 +618,96 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="4CA-fY-SrS" kind="show" id="FjQ-uM-p1P"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aPJ-4C-XGT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3245" y="852"/>
+            <point key="canvasLocation" x="3295" y="165"/>
+        </scene>
+        <!--Tax Tip View Controller-->
+        <scene sceneID="g7z-XM-jDn">
+            <objects>
+                <viewController id="4CA-fY-SrS" customClass="TaxTipViewController" customModule="Divvy" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JUe-0m-yAz"/>
+                        <viewControllerLayoutGuide type="bottom" id="TCY-GY-8QE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Y9g-5z-CpT">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total: $0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4O6-Xb-jZc">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="40w-7g-m0p">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Calculate everyones amounts!"/>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="40w-7g-m0p" firstAttribute="centerX" secondItem="Y9g-5z-CpT" secondAttribute="centerX" id="ElC-d4-opS"/>
+                            <constraint firstItem="TCY-GY-8QE" firstAttribute="top" secondItem="40w-7g-m0p" secondAttribute="bottom" constant="35" id="WKy-aG-Hv4"/>
+                            <constraint firstItem="4O6-Xb-jZc" firstAttribute="top" secondItem="JUe-0m-yAz" secondAttribute="bottom" constant="30" id="eRV-fC-RoF"/>
+                            <constraint firstItem="4O6-Xb-jZc" firstAttribute="centerX" secondItem="Y9g-5z-CpT" secondAttribute="centerX" id="vdE-Zk-hi2"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="4O6-Xb-jZc"/>
+                                <exclude reference="40w-7g-m0p"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="eRV-fC-RoF"/>
+                                <exclude reference="vdE-Zk-hi2"/>
+                                <exclude reference="ElC-d4-opS"/>
+                                <exclude reference="WKy-aG-Hv4"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular">
+                            <mask key="subviews">
+                                <include reference="4O6-Xb-jZc"/>
+                                <include reference="40w-7g-m0p"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="eRV-fC-RoF"/>
+                                <include reference="vdE-Zk-hi2"/>
+                                <include reference="ElC-d4-opS"/>
+                                <include reference="WKy-aG-Hv4"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <segue destination="7GS-pK-gXl" kind="show" id="eSA-Pm-Zr1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s9P-hS-cKi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4002" y="165"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="TlX-J8-sYM">
+            <objects>
+                <viewController id="7GS-pK-gXl" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yYo-h9-KWi"/>
+                        <viewControllerLayoutGuide type="bottom" id="VXr-xl-uwf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZwJ-dX-a1p">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G1y-df-oLr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4769" y="468"/>
         </scene>
         <!--Add Dishes View Controller-->
         <scene sceneID="phu-36-dP2">
@@ -643,7 +729,7 @@
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="723-L4-wU5"/>
-                                            <constraint firstAttribute="width" constant="240" id="n5a-KA-Gp2"/>
+                                            <constraint firstAttribute="width" constant="400" id="n5a-KA-Gp2"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -877,14 +963,38 @@
                         <outlet property="receiptImageView" destination="fEz-7L-QkO" id="etx-hW-4cZ"/>
                         <outlet property="scrollView" destination="Td6-WM-0Oa" id="he5-Bx-gxV"/>
                         <outlet property="tableView" destination="YQM-oD-aW7" id="UEh-Dv-guI"/>
+                        <segue destination="Oh8-jg-Cjz" kind="show" id="UJp-2i-ZcX"/>
+                        <segue destination="asl-Eg-bKM" kind="show" id="0Qd-W0-hX3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Zc-4F-fcU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2531" y="468"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="gLb-0n-VBI">
+            <objects>
+                <viewController id="asl-Eg-bKM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="d6q-U4-EcJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="aeg-Id-DDS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eJt-1R-lXv">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="7GS-pK-gXl" kind="show" id="9to-Bp-xZq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mmg-Lh-3JB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3295" y="870.75"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="ixg-Sg-wUz"/>
+        <segue reference="eSA-Pm-Zr1"/>
     </inferredMetricsTieBreakers>
 </document>

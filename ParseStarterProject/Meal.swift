@@ -66,7 +66,7 @@ class Meal {
     //update the parse object with key val pair, need id to be previously stored for this method
     func updateParseObject(key: String, val: AnyObject) {
         let query = PFQuery(className:"Meal")
-        query.getObjectInBackgroundWithId(self.parseId!) {
+        query.getObjectInBackgroundWithId((Meal.curMeal?.parseId)!) {
             (parseMeal: PFObject?, error: NSError?) -> Void in
             if error != nil {
                 print(error)

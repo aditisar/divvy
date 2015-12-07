@@ -75,7 +75,7 @@ class AddDishesViewController: UIViewController, UITextFieldDelegate, UITableVie
             
 
             //parse
-            //don't need to do parse because it happens in dish init..
+            dish.saveToParse()
             dishNameTextField.becomeFirstResponder()
             
         }

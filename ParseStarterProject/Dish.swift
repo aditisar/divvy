@@ -36,7 +36,6 @@ class Dish {
         }
         parseDish["meal"] = self.mealParseObject
         self.parseObject = parseDish
-        self.saveToParse()
     }
 
     
@@ -56,7 +55,7 @@ class Dish {
                 for user in self.users {
                     relation.addObject(user.parseObject!)
                 }
-                parseDish["meal"] = self.mealParseObject
+//                parseDish["meal"] = self.mealParseObject
                 self.parseObject = parseDish
                 parseDish.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
                     print("Dish has been updated to match local version.")
@@ -85,7 +84,7 @@ class Dish {
         }
     }
     
-    private
+    
     
     //saves to parse, is only used to be called in init
     func saveToParse() {
