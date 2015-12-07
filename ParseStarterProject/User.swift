@@ -50,10 +50,10 @@ class User {
         if let meal = self.meal {
             parseUser["parent"] = meal
         }
-        //if it has been saved before
-        if let id = self.parseId {
-            parseUser["objectId"] = id
-        }
+//        //if it has been saved before
+//        if let id = self.parseId {
+//            parseUser["objectId"] = id
+//        }
         return parseUser
     }
     
