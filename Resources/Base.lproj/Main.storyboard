@@ -775,7 +775,7 @@
             </objects>
             <point key="canvasLocation" x="4781" y="492"/>
         </scene>
-        <!--Add Dishes View Controller-->
+        <!--Add Your Own Dishes-->
         <scene sceneID="phu-36-dP2">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="68K-oe-m6G" customClass="AddDishesViewController" customModule="Divvy" customModuleProvider="target" sceneMemberID="viewController">
@@ -1025,6 +1025,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Add Your Own Dishes" id="lYX-tg-kmq">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="V5g-j0-pFm"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="addDishButton" destination="OGa-0U-RVX" id="Iva-GF-1F9"/>
                         <outlet property="dishCostTextField" destination="jJX-GQ-gGM" id="Yu7-2S-JtO"/>
@@ -1066,7 +1069,7 @@
             </objects>
             <point key="canvasLocation" x="3295" y="870.75"/>
         </scene>
-        <!--Add Shared Dishes View Controller-->
+        <!--Add Shared Dishes-->
         <scene sceneID="dSV-lN-Km3">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="uqj-tc-WmS" customClass="AddSharedDishesViewController" customModule="Divvy" customModuleProvider="target" sceneMemberID="viewController">
@@ -1221,8 +1224,7 @@
                                         <exclude reference="okL-oJ-E10"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="20" width="600" height="345"/>
+                                <variation key="heightClass=regular">
                                     <mask key="subviews">
                                         <include reference="mUL-Io-PnO"/>
                                     </mask>
@@ -1320,6 +1322,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Add Shared Dishes" id="Ylf-k6-Oeh">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="px5-Dg-6oi"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="addDishButton" destination="fBS-jn-TiF" id="7pW-if-Wxv"/>
                         <outlet property="dishCostTextField" destination="Wja-VZ-MA2" id="ua8-Qg-kxt"/>
