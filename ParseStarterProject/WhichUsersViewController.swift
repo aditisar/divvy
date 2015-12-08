@@ -22,9 +22,9 @@ class WhichUsersViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("usernameCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("usernameCell", forIndexPath: indexPath) as! WhoSharedCell
         
-        cell.textLabel?.text = String(User.allUsers[indexPath.item]["username"])
+        cell.usernameLabel.text = String(User.allUsers[indexPath.item]["username"])
         return cell
     }
     
