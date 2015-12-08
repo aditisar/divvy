@@ -19,7 +19,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
         self.username.delegate = self
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-        // Do any additional setup after loading the view, typically from a nib.
+        view.addGestureRecognizer(tap)
     }
     
     override func didReceiveMemoryWarning() {
