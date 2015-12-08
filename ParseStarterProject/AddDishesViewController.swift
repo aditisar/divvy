@@ -68,7 +68,6 @@ class AddDishesViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             Meal.curMeal?.dishes.append(dish)
             print("list of local dishes for cur meal", Meal.curMeal?.dishes)
             self.tableView.reloadData()
-            print("Table should have updated..")
             dish.users.append(User.curUser!)
 
             //parse
@@ -82,8 +81,9 @@ class AddDishesViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     }
     
     @IBAction func ownDishesContinueButtonTapped(sender: AnyObject) {
-        performSegueWithIdentifier("leaderFinishedAddingDishes", sender: self)
-        
+        if (User.curUser?.isLeader == true){
+            performSegueWithIdentifier("leaderFinishedAddingDishes", sender: self)
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

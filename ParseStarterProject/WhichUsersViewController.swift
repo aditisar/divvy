@@ -18,12 +18,13 @@ class WhichUsersViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return User.allUsers.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("usernameCell", forIndexPath: indexPath) as! UITableViewCell
-        cell.textLabel?.text = "hi"
+        
+        cell.textLabel?.text = String(User.allUsers[indexPath.item]["username"])
         return cell
     }
     

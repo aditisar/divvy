@@ -69,14 +69,10 @@ class AddSharedDishesViewController: UIViewController, UITextFieldDelegate, UISc
             let controller = vc.popoverPresentationController
             vc.popoverPresentationController!.delegate = self
             vc.preferredContentSize = CGSize(width: 320, height: 400)
-
+            
             if (controller != nil){
                 controller?.delegate = self
             }
-            
-            
-            
-            
         }
     }
     
@@ -111,12 +107,12 @@ class AddSharedDishesViewController: UIViewController, UITextFieldDelegate, UISc
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return User.allUsers.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("dishCell", forIndexPath: indexPath) as! UITableViewCell
-        cell.textLabel?.text = "hi"
+        cell.textLabel?.text = String(User.allUsers[indexPath.item]["username"])
         return cell
     }
     

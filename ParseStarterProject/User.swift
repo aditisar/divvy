@@ -13,9 +13,10 @@ import Parse
 class User {
     
     static var curUser: User?
+    static var allUsers = [PFObject]()
     //stages of where the user is in the process
     static let UserJoining = 0 , UserJoined = 1, UserDishesSaved = 2, UserSharedDishesRemoved = 3
-    
+
     var username: String
     var isLeader: Bool
     var stage = 0;
@@ -34,7 +35,6 @@ class User {
         self.payment = 0.0
         
         dishes = [Dish]()
-
         
     }
     
@@ -85,6 +85,7 @@ class User {
             }
         }
     }
+    
     
     
     

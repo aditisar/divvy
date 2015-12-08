@@ -45,13 +45,16 @@ class WaitingForMembersViewController: UIViewController, UITableViewDataSource, 
         query.findObjectsInBackgroundWithBlock {
             (users: [PFObject]?, error: NSError?) -> Void in
             self.usernames.removeAll()
+            User.allUsers.removeAll()
             for user in users! {
+                User.allUsers.append(user)
                 self.usernames.append(user["username"] as! String)
             }
             if (self.usernames.count > 0) {self.readyToBeginButton.enabled = true} //TODO Make 1 when finished debugging
         }
         joinedMemberCount.text = String(usernames.count) + " member(s) have joined your party"
         print("usernames",usernames)
+    
         tableview.reloadData()
     }
 
@@ -90,6 +93,7 @@ class WaitingForMembersViewController: UIViewController, UITableViewDataSource, 
         } else { //if the leader physically pressed it
             Meal.curMeal?.updateParseObject("stage", val: Meal.BeginAddingDishes)
         }
+        
         Meal.curMeal?.stage = Meal.BeginAddingDishes // 1
         self.performSegueWithIdentifier("beginAddingDishes", sender: self)
     }
