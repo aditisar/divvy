@@ -9,7 +9,8 @@
 import Foundation
 import Parse
 
-class AddSharedDishesViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate{
+@available(iOS 8.0, *)
+class AddSharedDishesViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate{
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var addDishButton: UIButton!
@@ -58,7 +59,30 @@ class AddSharedDishesViewController: UIViewController, UITextFieldDelegate, UISc
         return false
     }
     
+    @IBAction func showPopover(sender: AnyObject) {
+        performSegueWithIdentifier("showPopover", sender: self)
+    }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "showPopover"){
+            let vc = segue.destinationViewController as! UIViewController
+            let controller = vc.popoverPresentationController
+            vc.popoverPresentationController!.delegate = self
+            vc.preferredContentSize = CGSize(width: 320, height: 400)
+
+            if (controller != nil){
+                controller?.delegate = self
+            }
+            
+            
+            
+            
+        }
+    }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .None
+    }
     
     @IBAction func addDishTapped(sender: AnyObject) {
         if (dishNameTextField.text != "" && dishCostTextField.text != ""){
