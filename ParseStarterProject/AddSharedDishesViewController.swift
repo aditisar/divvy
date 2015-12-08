@@ -131,7 +131,7 @@ class AddSharedDishesViewController: UIViewController, UITextFieldDelegate, UISc
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("dishCell", forIndexPath: indexPath) as! UITableViewCell
-        cell.textLabel?.text = String(Meal.curMeal?.sharedDishes[indexPath.item].name)
+        cell.textLabel?.text = Meal.curMeal?.sharedDishes[indexPath.item].name
         return cell
     }
     

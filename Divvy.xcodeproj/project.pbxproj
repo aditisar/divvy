@@ -14,6 +14,7 @@
 		49405BD21C16691200FEB91A /* AddSharedDishesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49405BD11C16691200FEB91A /* AddSharedDishesViewController.swift */; };
 		49405BD41C168C4200FEB91A /* WhichUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49405BD31C168C4200FEB91A /* WhichUsersViewController.swift */; };
 		49405BD61C17324500FEB91A /* WhoSharedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49405BD51C17324500FEB91A /* WhoSharedCell.swift */; };
+		496CEA371C176D500077A918 /* FollowerWaitScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496CEA361C176D500077A918 /* FollowerWaitScreenViewController.swift */; };
 		49DFFE011C13870B00C3121D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFFE001C13870B00C3121D /* User.swift */; };
 		49DFFE031C13871400C3121D /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFFE021C13871400C3121D /* Meal.swift */; };
 		49DFFE051C1387D400C3121D /* UploadReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFFE041C1387D400C3121D /* UploadReceiptViewController.swift */; };
@@ -38,6 +39,7 @@
 		49405BD11C16691200FEB91A /* AddSharedDishesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSharedDishesViewController.swift; sourceTree = "<group>"; };
 		49405BD31C168C4200FEB91A /* WhichUsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhichUsersViewController.swift; sourceTree = "<group>"; };
 		49405BD51C17324500FEB91A /* WhoSharedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhoSharedCell.swift; sourceTree = "<group>"; };
+		496CEA361C176D500077A918 /* FollowerWaitScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerWaitScreenViewController.swift; sourceTree = "<group>"; };
 		49DFFE001C13870B00C3121D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		49DFFE021C13871400C3121D /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		49DFFE041C1387D400C3121D /* UploadReceiptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadReceiptViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				49405BD11C16691200FEB91A /* AddSharedDishesViewController.swift */,
 				49405BD31C168C4200FEB91A /* WhichUsersViewController.swift */,
 				49405BD51C17324500FEB91A /* WhoSharedCell.swift */,
+				496CEA361C176D500077A918 /* FollowerWaitScreenViewController.swift */,
 			);
 			path = ParseStarterProject;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				49405BD41C168C4200FEB91A /* WhichUsersViewController.swift in Sources */,
 				49DFFE031C13871400C3121D /* Meal.swift in Sources */,
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
+				496CEA371C176D500077A918 /* FollowerWaitScreenViewController.swift in Sources */,
 				49DFFE071C13880E00C3121D /* UserWillJoinViewController.swift in Sources */,
 				49405B941C15BBB500FEB91A /* TaxTipViewController.swift in Sources */,
 				49405B8C1C13A81C00FEB91A /* WaitingForMembersViewController.swift in Sources */,
