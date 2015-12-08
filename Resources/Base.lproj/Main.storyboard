@@ -1133,7 +1133,7 @@
                                 <animations/>
                                 <state key="normal" title="Add Dish"/>
                                 <connections>
-                                    <action selector="addDishTapped:" destination="BWQ-VA-cSh" eventType="touchUpInside" id="VQv-L8-j27"/>
+                                    <action selector="addSharedDish:" destination="BWQ-VA-cSh" eventType="touchUpInside" id="DDI-0w-Tgx"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="adc-Pe-E3e">

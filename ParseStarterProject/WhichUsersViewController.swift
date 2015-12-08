@@ -12,6 +12,7 @@ import Parse
 class WhichUsersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     @IBOutlet weak var tableView: UITableView!
+    var delegate: SharedUsersChecked? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,4 +29,17 @@ class WhichUsersViewController: UIViewController, UITableViewDataSource, UITable
         return cell
     }
     
+    @IBAction func addSharedDish(sender: AnyObject) {
+        if (delegate != nil) {
+            let information:String = "testing testing pls work"
+            delegate!.test(information)
+            let parent :UIViewController! = self.presentingViewController;
+            
+            self.dismissViewControllerAnimated(false, completion: {()->Void in
+                parent.dismissViewControllerAnimated(false, completion: nil);
+            });
+        }
+
+
+    }
 }

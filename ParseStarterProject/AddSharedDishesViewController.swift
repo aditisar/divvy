@@ -9,8 +9,13 @@
 import Foundation
 import Parse
 
+
+protocol SharedUsersChecked {
+    func test(info:String)
+}
+
 @available(iOS 8.0, *)
-class AddSharedDishesViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate{
+class AddSharedDishesViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate, SharedUsersChecked{
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var addDishButton: UIButton!
@@ -60,11 +65,21 @@ class AddSharedDishesViewController: UIViewController, UITextFieldDelegate, UISc
     }
     
     @IBAction func showPopover(sender: AnyObject) {
-        performSegueWithIdentifier("showPopover", sender: self)
+        if (dishNameTextField.text != "" && dishCostTextField.text != ""){
+            performSegueWithIdentifier("showPopover", sender: self)
+        } else if (dishNameTextField.text == ""){
+            dishNameTextField.becomeFirstResponder()
+        } else if (dishCostTextField.text == ""){
+            dishCostTextField.becomeFirstResponder()
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "showPopover"){
+            //get rid of the keyboard before showing popover
+            dishCostTextField.resignFirstResponder()
+            dishNameTextField.resignFirstResponder()
+            
             let vc = segue.destinationViewController as! UIViewController
             let controller = vc.popoverPresentationController
             vc.popoverPresentationController!.delegate = self
@@ -73,32 +88,23 @@ class AddSharedDishesViewController: UIViewController, UITextFieldDelegate, UISc
             if (controller != nil){
                 controller?.delegate = self
             }
+
+            let infoVC:WhichUsersViewController = segue.destinationViewController as! WhichUsersViewController
+            infoVC.delegate = self
+
+            
         }
+        
+        
+        
+    }
+    
+    func test(info: String){
+            print(info)
     }
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return .None
-    }
-    
-    @IBAction func addDishTapped(sender: AnyObject) {
-        if (dishNameTextField.text != "" && dishCostTextField.text != ""){
-            
-            //local
-            let dish = Dish(name: dishNameTextField.text!, cost: Double(dishCostTextField.text!)!, meal: (Meal.curMeal?.parseObject)!)
-            Meal.curMeal?.dishes.append(dish)
-            print("list of local dishes for cur meal", Meal.curMeal?.dishes)
-            self.tableView.reloadData()
-            print("Table should have updated..")
-            dish.users.append(User.curUser!)
-            
-            //parse
-            dish.saveToParse()
-            
-            //textfield stuff
-            dishNameTextField.text = ""
-            dishCostTextField.text = ""
-            dishNameTextField.becomeFirstResponder()
-        }
     }
     
     @IBAction func sharedDishesContinueButtonTapped(sender: AnyObject) {
