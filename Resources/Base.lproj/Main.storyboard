@@ -1093,7 +1093,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="F4t-uq-8FK"/>
+                                    <constraint firstAttribute="width" constant="275" id="F4t-uq-8FK"/>
                                     <constraint firstAttribute="height" constant="250" id="chS-8t-3lT"/>
                                 </constraints>
                                 <prototypes>
@@ -1268,7 +1268,7 @@
                                     <constraint firstItem="Wja-VZ-MA2" firstAttribute="centerY" secondItem="S4s-R6-7Mo" secondAttribute="centerY" id="LCx-E2-3Gh"/>
                                     <constraint firstAttribute="height" constant="70" id="Nkb-wv-6yN"/>
                                     <constraint firstItem="j3c-YM-Vek" firstAttribute="centerY" secondItem="S4s-R6-7Mo" secondAttribute="centerY" id="nLa-Fk-YiU"/>
-                                    <constraint firstItem="j3c-YM-Vek" firstAttribute="width" secondItem="S4s-R6-7Mo" secondAttribute="width" multiplier="0.6" id="zqI-t4-y68" userLabel="ex. spaghetti.width = width * .6"/>
+                                    <constraint firstItem="j3c-YM-Vek" firstAttribute="width" secondItem="S4s-R6-7Mo" secondAttribute="width" multiplier="0.55" id="zqI-t4-y68" userLabel="ex. spaghetti.width = width * .6"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
