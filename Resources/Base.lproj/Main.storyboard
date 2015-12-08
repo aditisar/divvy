@@ -25,10 +25,10 @@
             </objects>
             <point key="canvasLocation" x="-498" y="468"/>
         </scene>
-        <!--View Controller-->
+        <!--Home-->
         <scene sceneID="qaw-9J-Fxd">
             <objects>
-                <viewController id="pGj-Yb-qKy" customClass="ViewController" customModule="Divvy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Home" id="pGj-Yb-qKy" customClass="ViewController" customModule="Divvy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yLD-1P-QF8"/>
                         <viewControllerLayoutGuide type="bottom" id="ezi-xE-EWK"/>
@@ -143,10 +143,10 @@
             </objects>
             <point key="canvasLocation" x="254" y="468"/>
         </scene>
-        <!--User Will Join View Controller-->
+        <!--Join a Group-->
         <scene sceneID="sdg-dB-FdI">
             <objects>
-                <viewController id="rV6-Q6-Zgh" customClass="UserWillJoinViewController" customModule="Divvy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Join a Group" id="rV6-Q6-Zgh" customClass="UserWillJoinViewController" customModule="Divvy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fIY-0J-CqU"/>
                         <viewControllerLayoutGuide type="bottom" id="Xib-64-J8H"/>
@@ -243,10 +243,10 @@
             </objects>
             <point key="canvasLocation" x="1050" y="960.75"/>
         </scene>
-        <!--Upload Receipt View Controller-->
+        <!--Upload Receipt-->
         <scene sceneID="BqS-Nm-IeT">
             <objects>
-                <viewController id="pav-aW-hxG" customClass="UploadReceiptViewController" customModule="Divvy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Upload Receipt" id="pav-aW-hxG" customClass="UploadReceiptViewController" customModule="Divvy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0zZ-Zx-Ctu"/>
                         <viewControllerLayoutGuide type="bottom" id="gzS-MM-doA"/>
@@ -604,10 +604,10 @@
             </objects>
             <point key="canvasLocation" x="1814" y="468"/>
         </scene>
-        <!--Tax Tip View Controller-->
+        <!--Tax and Tip-->
         <scene sceneID="g7z-XM-jDn">
             <objects>
-                <viewController id="4CA-fY-SrS" customClass="TaxTipViewController" customModule="Divvy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Tax and Tip" id="4CA-fY-SrS" customClass="TaxTipViewController" customModule="Divvy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JUe-0m-yAz"/>
                         <viewControllerLayoutGuide type="bottom" id="TCY-GY-8QE"/>
@@ -1066,10 +1066,10 @@
             </objects>
             <point key="canvasLocation" x="3295" y="870.75"/>
         </scene>
-        <!--Add Dishes View Controller-->
+        <!--Add Shared Dishes View Controller-->
         <scene sceneID="dSV-lN-Km3">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="uqj-tc-WmS" customClass="AddDishesViewController" customModule="Divvy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="uqj-tc-WmS" customClass="AddSharedDishesViewController" customModule="Divvy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OsP-7K-1Ch"/>
                         <viewControllerLayoutGuide type="bottom" id="9Yq-Fo-dA3"/>
@@ -1164,7 +1164,7 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <animations/>
                                 <connections>
-                                    <action selector="addDishTapped:" destination="uqj-tc-WmS" eventType="touchUpInside" id="Ztl-da-XSo"/>
+                                    <action selector="addDishTapped:" destination="uqj-tc-WmS" eventType="touchUpInside" id="Rso-d2-u2y"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="po6-g9-cRx">
@@ -1172,7 +1172,7 @@
                                 <animations/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
-                                    <action selector="sharedDishesContinueButtonTapped:" destination="uqj-tc-WmS" eventType="touchUpInside" id="bva-Fn-upt"/>
+                                    <action selector="sharedDishesContinueButtonTapped:" destination="uqj-tc-WmS" eventType="touchUpInside" id="reO-x7-5HK"/>
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="5" translatesAutoresizingMaskIntoConstraints="NO" id="M2u-4K-4G7">
@@ -1221,7 +1221,8 @@
                                         <exclude reference="okL-oJ-E10"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular">
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="20" width="600" height="345"/>
                                     <mask key="subviews">
                                         <include reference="mUL-Io-PnO"/>
                                     </mask>
@@ -1320,16 +1321,16 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="addDishButton" destination="fBS-jn-TiF" id="M2d-cz-ADl"/>
-                        <outlet property="dishCostTextField" destination="Wja-VZ-MA2" id="CMD-EL-NIh"/>
-                        <outlet property="dishNameTextField" destination="j3c-YM-Vek" id="9cr-eO-ljE"/>
-                        <outlet property="imageConstraintBottom" destination="XYX-39-uDO" id="f8m-HV-HyW"/>
-                        <outlet property="imageConstraintLeft" destination="okL-oJ-E10" id="Qj5-Sw-ScI"/>
-                        <outlet property="imageConstraintRight" destination="9J4-3h-PI7" id="GeA-bN-WsI"/>
-                        <outlet property="imageConstraintTop" destination="n2P-hx-yAL" id="JIh-ZE-Ylv"/>
-                        <outlet property="receiptImageView" destination="mUL-Io-PnO" id="F0g-jK-p1g"/>
-                        <outlet property="scrollView" destination="M2u-4K-4G7" id="pvQ-EG-cVr"/>
-                        <outlet property="tableView" destination="eTy-Mb-CvS" id="Rre-B7-pHV"/>
+                        <outlet property="addDishButton" destination="fBS-jn-TiF" id="7pW-if-Wxv"/>
+                        <outlet property="dishCostTextField" destination="Wja-VZ-MA2" id="ua8-Qg-kxt"/>
+                        <outlet property="dishNameTextField" destination="j3c-YM-Vek" id="YaZ-bm-N24"/>
+                        <outlet property="imageConstraintBottom" destination="XYX-39-uDO" id="x5g-5o-Pv4"/>
+                        <outlet property="imageConstraintLeft" destination="okL-oJ-E10" id="x82-Fd-How"/>
+                        <outlet property="imageConstraintRight" destination="9J4-3h-PI7" id="NbJ-XN-ywG"/>
+                        <outlet property="imageConstraintTop" destination="n2P-hx-yAL" id="fa3-gX-BAg"/>
+                        <outlet property="receiptImageView" destination="mUL-Io-PnO" id="iOd-an-gAq"/>
+                        <outlet property="scrollView" destination="M2u-4K-4G7" id="QPh-0C-tIY"/>
+                        <outlet property="tableView" destination="eTy-Mb-CvS" id="ARZ-FX-70N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qSe-MT-tun" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1338,8 +1339,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="URu-b2-qJQ"/>
-        <segue reference="9to-Bp-xZq"/>
-        <segue reference="ixg-Sg-wUz"/>
+        <segue reference="Ibd-cc-x4u"/>
+        <segue reference="b76-SL-F3P"/>
+        <segue reference="eSA-Pm-Zr1"/>
     </inferredMetricsTieBreakers>
 </document>

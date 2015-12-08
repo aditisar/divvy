@@ -11,6 +11,7 @@
 		49405B8E1C13E63E00FEB91A /* AddDishesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49405B8D1C13E63E00FEB91A /* AddDishesViewController.swift */; };
 		49405B901C13F5D100FEB91A /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49405B8F1C13F5D100FEB91A /* Dish.swift */; };
 		49405B941C15BBB500FEB91A /* TaxTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49405B931C15BBB500FEB91A /* TaxTipViewController.swift */; };
+		49405BD21C16691200FEB91A /* AddSharedDishesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49405BD11C16691200FEB91A /* AddSharedDishesViewController.swift */; };
 		49DFFE011C13870B00C3121D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFFE001C13870B00C3121D /* User.swift */; };
 		49DFFE031C13871400C3121D /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFFE021C13871400C3121D /* Meal.swift */; };
 		49DFFE051C1387D400C3121D /* UploadReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFFE041C1387D400C3121D /* UploadReceiptViewController.swift */; };
@@ -32,6 +33,7 @@
 		49405B8D1C13E63E00FEB91A /* AddDishesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDishesViewController.swift; sourceTree = "<group>"; };
 		49405B8F1C13F5D100FEB91A /* Dish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		49405B931C15BBB500FEB91A /* TaxTipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaxTipViewController.swift; sourceTree = "<group>"; };
+		49405BD11C16691200FEB91A /* AddSharedDishesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSharedDishesViewController.swift; sourceTree = "<group>"; };
 		49DFFE001C13870B00C3121D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		49DFFE021C13871400C3121D /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		49DFFE041C1387D400C3121D /* UploadReceiptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadReceiptViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				49405B8B1C13A81C00FEB91A /* WaitingForMembersViewController.swift */,
 				49405B8D1C13E63E00FEB91A /* AddDishesViewController.swift */,
 				49405B8F1C13F5D100FEB91A /* Dish.swift */,
+				49405BD11C16691200FEB91A /* AddSharedDishesViewController.swift */,
 			);
 			path = ParseStarterProject;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				49405B901C13F5D100FEB91A /* Dish.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				49DFFE011C13870B00C3121D /* User.swift in Sources */,
+				49405BD21C16691200FEB91A /* AddSharedDishesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

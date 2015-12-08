@@ -1,15 +1,15 @@
 //
-//  AddDishesViewController.swift
+//  AddSharedDishesViewController.swift
 //  Divvy
 //
-//  Created by Aditi Sarkar on 12/5/15.
+//  Created by Aditi Sarkar on 12/7/15.
 //  Copyright © 2015 Parse. All rights reserved.
 //
 
 import Foundation
 import Parse
 
-class AddDishesViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate{
+class AddSharedDishesViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate{
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var addDishButton: UIButton!
@@ -57,7 +57,7 @@ class AddDishesViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         }
         return false
     }
-
+    
     
     
     @IBAction func addDishTapped(sender: AnyObject) {
@@ -70,7 +70,7 @@ class AddDishesViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             self.tableView.reloadData()
             print("Table should have updated..")
             dish.users.append(User.curUser!)
-
+            
             //parse
             dish.saveToParse()
             
@@ -81,20 +81,18 @@ class AddDishesViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         }
     }
     
-    @IBAction func ownDishesContinueButtonTapped(sender: AnyObject) {
-        performSegueWithIdentifier("leaderFinishedAddingDishes", sender: self)
+    @IBAction func sharedDishesContinueButtonTapped(sender: AnyObject) {
+        performSegueWithIdentifier("leaderFinishedAddingSharedDishes", sender: self)
         
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (Meal.curMeal?.dishes.count)!
+        return 5
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("dishCell", forIndexPath: indexPath) as! UITableViewCell
-        print("in tableview method")
-        print(Meal.curMeal?.dishes[indexPath.item].name)
-        cell.textLabel?.text = Meal.curMeal?.dishes[indexPath.item].name
+        cell.textLabel?.text = "hi"
         return cell
     }
     
@@ -103,7 +101,7 @@ class AddDishesViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     // CODE BELOW IS NOT WRITTEN BY ME, it is from
     // https://github.com/evgenyneu/ios-imagescroll-swift
     // to allow scrolling in for the receipt image
-    
+
     @IBOutlet weak var receiptImageView: UIImageView!
     
     @IBOutlet weak var imageConstraintTop: NSLayoutConstraint!
@@ -195,8 +193,8 @@ class AddDishesViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
         return receiptImageView
     }
-
-// ***********************************************************************************************************
     
-
+    // ***********************************************************************************************************
+    
+    
 }
