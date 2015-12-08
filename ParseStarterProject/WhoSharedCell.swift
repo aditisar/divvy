@@ -10,11 +10,7 @@ import Foundation
 import UIKit
 
 class WhoSharedCell: UITableViewCell {
-    
     @IBOutlet weak var usernameLabel: UILabel!
-    
     @IBOutlet weak var sharedSwitch: UISwitch!
-    
-        
 }
 

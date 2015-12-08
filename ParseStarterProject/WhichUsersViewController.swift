@@ -32,12 +32,20 @@ class WhichUsersViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBAction func addSharedDish(sender: AnyObject) {
         if (delegate != nil) {
+            var peopleWhoSharedIndices = [Int]()
+            for row in 0..<tableView.numberOfRowsInSection(0) {
+                
+                let indexPath = NSIndexPath(forRow: row, inSection: 0)
+                var cell = tableView.cellForRowAtIndexPath(indexPath) as! WhoSharedCell
+                if cell.sharedSwitch.on {
+                    peopleWhoSharedIndices.append(indexPath.item)
+                }
+                
+            }
             
-           
+            print("people who shared indicies", peopleWhoSharedIndices)
             
-            
-            
-            delegate!.addSharedDish([0,1])
+            delegate!.addSharedDish(peopleWhoSharedIndices)
             let parent :UIViewController! = self.presentingViewController;
             
             self.dismissViewControllerAnimated(false, completion: {()->Void in

@@ -11,8 +11,7 @@ import Parse
 
 
 protocol SharedUsersChecked {
-    func test(info:String)
-    func addSharedDish(peopleWhoSharedIndeces:[Int])
+    func addSharedDish(peopleWhoSharedIndices:[Int])
 }
 
 @available(iOS 8.0, *)
@@ -76,11 +75,11 @@ class AddSharedDishesViewController: UIViewController, UITextFieldDelegate, UISc
     }
     
     
-    func addSharedDish(peopleWhoSharedIndeces: [Int]){        
+    func addSharedDish(peopleWhoSharedIndices: [Int]){
         
         //local
         let dish = Dish(name: dishNameTextField.text!, cost: Double(dishCostTextField.text!)!, meal: (Meal.curMeal?.parseObject)!)
-        for i in peopleWhoSharedIndeces {
+        for i in peopleWhoSharedIndices {
             dish.users.append(User.allUsers[i])
         }
         Meal.curMeal?.sharedDishes.append(dish)
@@ -95,8 +94,6 @@ class AddSharedDishesViewController: UIViewController, UITextFieldDelegate, UISc
         dishNameTextField.text = ""
         dishCostTextField.text = ""
         dishNameTextField.becomeFirstResponder()
-
-        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
