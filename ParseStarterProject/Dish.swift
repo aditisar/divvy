@@ -16,14 +16,13 @@ class Dish {
     var parseId: String?;
     var parseObject: PFObject
     var mealParseObject: PFObject
-    var users: [User]
+    var users: [PFObject]
     
     init(name: String, cost: Double, meal: PFObject) {
         //initialize local variables
         self.name = name
         self.cost = cost
-        self.users = [User]()
-        self.users.append(User.curUser!)
+        self.users = [PFObject]()
         self.mealParseObject = meal
         
         //create a Parse version
@@ -32,14 +31,12 @@ class Dish {
         parseDish["cost"] = self.cost
         let relation = parseDish.relationForKey("users")
         for user in users {
-            relation.addObject(user.parseObject!)
+            relation.addObject(user)
         }
         parseDish["meal"] = self.mealParseObject
         self.parseObject = parseDish
     }
 
-    
-    
     //updates parse object with local properties, should only be called after dish has been saved once
     func updateDishParseObjectFromLocal(){
         let query = PFQuery(className:"Dish")
@@ -53,7 +50,8 @@ class Dish {
                 parseDish["cost"] = self.cost
                 let relation = parseDish.relationForKey("users")
                 for user in self.users {
-                    relation.addObject(user.parseObject!)
+                    relation.addObject(user)
+                    print(user["username"])
                 }
 //                parseDish["meal"] = self.mealParseObject
                 self.parseObject = parseDish
@@ -62,10 +60,6 @@ class Dish {
                 }
             }
         }
-    }
-    
-    func updateDishLocalObjectFromParse(){
-
     }
     
     //update the parse object with key val pair, need id for this method
@@ -85,31 +79,16 @@ class Dish {
     }
     
     
-    
-    //saves to parse, is only used to be called in init
+    //saves to parse after updating its users relation
     func saveToParse() {
+        let relation = self.parseObject.relationForKey("users")
+        for user in users {
+            relation.addObject(user)
+        }
         self.parseObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
             print("Dish has been saved with id", self.parseObject.objectId! )
             self.parseId = self.parseObject.objectId!
         }
     }
-    
-    //maybe a get Users? and a get Meal
-//    func getUsernames() -> [String]{
-//        var usernames = [String]()
-//        let query = PFQuery(className: "User")
-//        query.whereKey("parent", equalTo: (parseObject)!)
-//        query.findObjectsInBackgroundWithBlock {
-//            (users: [PFObject]?, error: NSError?) -> Void in
-//            for user in users! {
-//                print("got a user", user.objectId)
-//                print("got a user", user["username"])
-//                usernames.append(user["username"] as! String)
-//            }
-//            
-//        }
-//        print("out of for", usernames)
-//        return usernames
-//    }
     
 }

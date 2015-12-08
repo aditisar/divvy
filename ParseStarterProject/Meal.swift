@@ -18,6 +18,7 @@ class Meal {
     var groupCode: String
     var members: [User]
     var dishes: [Dish]
+    var sharedDishes: [Dish]
     var parseId: String?;
     var parseObject: PFObject
     var stage = 0
@@ -27,6 +28,7 @@ class Meal {
         self.groupCode = groupCode
         members = [User]()
         dishes = [Dish]()
+        sharedDishes = [Dish]()
         
         //if leader create a parse version
         

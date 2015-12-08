@@ -12,6 +12,7 @@ import Parse
 
 protocol SharedUsersChecked {
     func test(info:String)
+    func addSharedDish(peopleWhoSharedIndeces:[Int])
 }
 
 @available(iOS 8.0, *)
@@ -74,6 +75,30 @@ class AddSharedDishesViewController: UIViewController, UITextFieldDelegate, UISc
         }
     }
     
+    
+    func addSharedDish(peopleWhoSharedIndeces: [Int]){        
+        
+        //local
+        let dish = Dish(name: dishNameTextField.text!, cost: Double(dishCostTextField.text!)!, meal: (Meal.curMeal?.parseObject)!)
+        for i in peopleWhoSharedIndeces {
+            dish.users.append(User.allUsers[i])
+        }
+        Meal.curMeal?.sharedDishes.append(dish)
+        self.tableView.reloadData()
+        print("list of local dishes for cur meal", Meal.curMeal?.sharedDishes)
+
+        
+        //parse
+        dish.saveToParse()
+        
+        //textfield stuff
+        dishNameTextField.text = ""
+        dishCostTextField.text = ""
+        dishNameTextField.becomeFirstResponder()
+
+        
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "showPopover"){
             //get rid of the keyboard before showing popover
@@ -91,16 +116,7 @@ class AddSharedDishesViewController: UIViewController, UITextFieldDelegate, UISc
 
             let infoVC:WhichUsersViewController = segue.destinationViewController as! WhichUsersViewController
             infoVC.delegate = self
-
-            
         }
-        
-        
-        
-    }
-    
-    func test(info: String){
-            print(info)
     }
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
@@ -113,12 +129,12 @@ class AddSharedDishesViewController: UIViewController, UITextFieldDelegate, UISc
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return User.allUsers.count
+        return (Meal.curMeal?.sharedDishes.count)!
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("dishCell", forIndexPath: indexPath) as! UITableViewCell
-        cell.textLabel?.text = String(User.allUsers[indexPath.item]["username"])
+        cell.textLabel?.text = String(Meal.curMeal?.sharedDishes[indexPath.item].name)
         return cell
     }
     

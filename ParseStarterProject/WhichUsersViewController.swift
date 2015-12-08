@@ -12,6 +12,7 @@ import Parse
 class WhichUsersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     @IBOutlet weak var tableView: UITableView!
+    //delegate protocol for sending who shared back to add shared dishes vc
     var delegate: SharedUsersChecked? = nil
 
     override func viewDidLoad() {
@@ -31,8 +32,12 @@ class WhichUsersViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBAction func addSharedDish(sender: AnyObject) {
         if (delegate != nil) {
-            let information:String = "testing testing pls work"
-            delegate!.test(information)
+            
+           
+            
+            
+            
+            delegate!.addSharedDish([0,1])
             let parent :UIViewController! = self.presentingViewController;
             
             self.dismissViewControllerAnimated(false, completion: {()->Void in

@@ -65,10 +65,10 @@ class AddDishesViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             
             //local
             let dish = Dish(name: dishNameTextField.text!, cost: Double(dishCostTextField.text!)!, meal: (Meal.curMeal?.parseObject)!)
+            dish.users.append((User.curUser?.parseObject)!)
             Meal.curMeal?.dishes.append(dish)
-            print("list of local dishes for cur meal", Meal.curMeal?.dishes)
             self.tableView.reloadData()
-            dish.users.append(User.curUser!)
+            print("list of local dishes for cur meal", Meal.curMeal?.dishes)
 
             //parse
             dish.saveToParse()
