@@ -26,13 +26,19 @@ class FollowerWaitScreenViewController: UIViewController{
             (meal: PFObject?, error: NSError?) -> Void in
             if error == nil && meal != nil {
                 let status = meal!["stage"] as! Int
-                if (status == Meal.BeginAddingDishes) {
+                if (status == Meal.FinishedCalculations) {
+                    self.finalStageReached()
                 }
             } else {
                 print("checking meal status, meal of current id not found", error)
             }
         }
     }
+    
+    func finalStageReached() {
+        performSegueWithIdentifier("showPopover", sender: self)
+    }
 
     
 }
+

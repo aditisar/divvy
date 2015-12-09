@@ -13,7 +13,7 @@ class Meal {
     
     static var curMeal: Meal?
     //stages of where the meal is in the process
-    static let MealCreated = 0 , BeginAddingDishes = 1
+    static let MealCreated = 0 , BeginAddingDishes = 1, FinishedCalculations = 2
  
     var groupCode: String
     var members: [User]

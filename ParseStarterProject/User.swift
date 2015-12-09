@@ -59,6 +59,10 @@ class User {
     
     func saveToParse() {
         let parseUser = self.convertToPFObject()
+        let acl = PFACL()
+        acl.publicWriteAccess = true
+        acl.publicReadAccess = true
+        parseUser.ACL = acl
         parseUser.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
             print("User", self.username, "has been saved with id", parseUser.objectId! )
             self.parseId = parseUser.objectId!
