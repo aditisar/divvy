@@ -11,9 +11,9 @@ import Parse
 
 class FinalBillViewController: UIViewController{
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         divvy()
     }
     
@@ -32,10 +32,8 @@ class FinalBillViewController: UIViewController{
         query.whereKey("meal", equalTo: (Meal.curMeal?.parseObject)!) //get all dishes with this meal
         query.findObjectsInBackgroundWithBlock { (mealDishes: [PFObject]?, error: NSError?) -> Void in
             if error == nil && mealDishes != nil {
-                print(mealDishes!.count)
                 print("mealDishes::::", allDishes)
                 allDishes += mealDishes!
-                print(mealDishes![1])
                 
                 
                 for dish in mealDishes!{
@@ -46,22 +44,20 @@ class FinalBillViewController: UIViewController{
                         if let error = error {
                             print(error)
                             // There was an error
-                            print("ERROR HERE WHEN GETTING USERS FROM RELATION")
                         } else { // if you are able to get the list of users for that dish
                             if users?.count == 1 { //if its NOT shared dish
                                 let user = users!.first
                                 user!["payment"] = user!["payment"] as! Double + cost
                                 user!.saveInBackground()
                                 print(user!["username"], " payment updated to ", user!["payment"])
+                            
                             } else { //if it is shared, iterate thru list of users
                                 let splitCost = cost / Double((users?.count)!)
                                 for user in users! {
                                     user["payment"] = user["payment"] as! Double + splitCost
                                     user.saveInBackground()
                                     print(user["username"], " payment updated to ", user["payment"])
-
                                 }
-                                
                                 
                             }
                         }
@@ -69,32 +65,59 @@ class FinalBillViewController: UIViewController{
                     
                 } //end looping through dishes to get each user's pre tax tip payment
                 
-                
+                //putting it here so doesn't mess with asynch. only happens after all users pretaxtip has been calculated
+                self.addTax()
+
                 
             } else {
-                print("ERROR HERE WHEN GETTING DISHES FROM CURMEAL")
                 print(error)
             }
         } //end of dish query
         
-//        addTax()
-//        addTip()
     }
     
-//    func addTax() {
-//        let query = PFQuery(className:"User")
-//        query.whereKey("meal", equalTo: (Meal.curMeal?.parseObject)!) //get all dishes with this meal
-//        query.findObjectsInBackgroundWithBlock { (mealDishes: [PFObject]?, error: NSError?) -> Void in
-//        
-//            
-//        
-//        }
-//
-//    }
-//    
-//    func addTip(){
-//        
-//    }
+    func addTax() {
+        let taxPercentage = (Meal.curMeal?.tax)! / (Meal.curMeal?.groupTotal)!
+        let query = PFQuery(className:"User")
+        query.whereKey("parent", equalTo: (Meal.curMeal?.parseObject)!) //get all users in the meal
+        query.findObjectsInBackgroundWithBlock { (mealUsers: [PFObject]?, error: NSError?) -> Void in
+            
+            if let error = error {
+                print(error)
+            } else {
+                for user in mealUsers! {
+                    user["payment"] = user["payment"] as! Double * (1 + taxPercentage)
+                    user.saveInBackground()
+                    print(user["username"], "amount with tax", user["payment"])
+                }
+            }
+            //putting it here so doesn't mess with asynch. only happens after all users pretip has been calculated
+            self.addTip()
+        }
+        
+        
+
+    }
+    
+    func addTip(){
+        let tipPercentage = (Meal.curMeal?.tip)!
+        let query = PFQuery(className:"User")
+        query.whereKey("parent", equalTo: (Meal.curMeal?.parseObject)!) //get all users in the meal
+        query.findObjectsInBackgroundWithBlock { (mealUsers: [PFObject]?, error: NSError?) -> Void in
+            
+            if let error = error {
+                print(error)
+            } else {
+                for user in mealUsers! {
+                    user["payment"] = user["payment"] as! Double * (1 + tipPercentage)
+                    user.saveInBackground()
+                    print(user["username"], "final amount with tax and tip", user["payment"])
+                }
+            }
+            //putting it here so doesn't mess with asynch. only happens after all everything has been calculated
+           // tableview.reloadTable();
+        }
+    }
     
     
 }

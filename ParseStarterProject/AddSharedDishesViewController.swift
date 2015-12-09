@@ -93,7 +93,6 @@ class AddSharedDishesViewController: UIViewController, UITextFieldDelegate, UISc
         //textfield stuff
         dishNameTextField.text = ""
         dishCostTextField.text = ""
-        dishNameTextField.becomeFirstResponder()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

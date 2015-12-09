@@ -21,6 +21,9 @@ class Meal {
     var sharedDishes: [Dish]
     var parseId: String?;
     var parseObject: PFObject
+    var groupTotal = 0.0
+    var tip = 0.0
+    var tax = 0.0
     var stage = 0
     
     init(groupCode: String) {
@@ -54,6 +57,7 @@ class Meal {
                 print("no such meal with that id")
             } else if let parseMeal = parseMeal {
                 parseMeal["groupCode"] = self.groupCode
+                parseMeal["groupTotal"] = self.groupTotal
                 parseMeal["stage"] = self.stage
                 self.parseObject = parseMeal
                 parseMeal.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
