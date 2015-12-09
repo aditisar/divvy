@@ -13,6 +13,7 @@ class FinalBillViewController: UIViewController, UITableViewDataSource, UITableV
     
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var totalLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,11 +36,12 @@ class FinalBillViewController: UIViewController, UITableViewDataSource, UITableV
         query.whereKey("meal", equalTo: (Meal.curMeal?.parseObject)!) //get all dishes with this meal
         query.findObjectsInBackgroundWithBlock { (mealDishes: [PFObject]?, error: NSError?) -> Void in
             if error == nil && mealDishes != nil {
-                print("mealDishes::::", allDishes)
                 allDishes += mealDishes!
-                
-                
-                for dish in mealDishes!{
+                print("mealDishes::::", allDishes)
+                let
+                numDishes = mealDishes!.count
+            
+                for (index,dish) in mealDishes!.enumerate(){
                     let cost = dish["cost"] as! Double
                     let userRelation = dish["users"]
                     userRelation.query().findObjectsInBackgroundWithBlock {
@@ -47,42 +49,44 @@ class FinalBillViewController: UIViewController, UITableViewDataSource, UITableV
                         if let error = error {
                             print(error)
                             // There was an error
-                        } else { // if you are able to get the list of users for that dish
-                            if users?.count == 1 { //if its NOT shared dish
-                                let user = users!.first
-                                user!["payment"] = user!["payment"] as! Double + cost
-                                user!.saveInBackground()
-                                print(user!["username"], " payment updated to ", user!["payment"])
-                            
-                            } else { //if it is shared, iterate thru list of users
-                                let splitCost = cost / Double((users?.count)!)
+                        } else {
+                            let splitCost = cost / Double((users?.count)!)
                                 for user in users! {
                                     user["payment"] = user["payment"] as! Double + splitCost
-                                    user.saveInBackground()
-                                    print(user["username"], " payment updated to ", user["payment"])
+                                    do {
+                                        try user.save()
+                                    } catch {
+                                        print("user couldnt save in shared dish", error)
+                                    }
+                                    print(user["username"], " payment updated to ", user["payment"],"with split cost of", dish["name"])
                                 }
                                 
-                            }
+                            //}
                         }
-                    } //end of looking through one dish's users
-                    
-                } //end looping through dishes to get each user's pre tax tip payment
-                
-                //putting it here so doesn't mess with asynch. only happens after all users pretaxtip has been calculated
-                self.addTax()
+                        if (index == mealDishes!.count - 1){
+                            self.addTax()
+                        }
+
+                    }
+                }
+
 
                 
             } else {
                 print(error)
             }
+
         } //end of dish query
-        
+
     }
     
     
     
     func addTax() {
+        print("*************************now calculating tax")
+        
         let taxPercentage = (Meal.curMeal?.tax)! / (Meal.curMeal?.groupTotal)!
+        print("tax percentage is", taxPercentage)
         let query = PFQuery(className:"User")
         query.whereKey("parent", equalTo: (Meal.curMeal?.parseObject)!) //get all users in the meal
         query.findObjectsInBackgroundWithBlock { (mealUsers: [PFObject]?, error: NSError?) -> Void in
@@ -91,7 +95,11 @@ class FinalBillViewController: UIViewController, UITableViewDataSource, UITableV
             } else {
                 for user in mealUsers! {
                     user["payment"] = user["payment"] as! Double * (1 + taxPercentage)
-                    user.saveInBackground()
+                    do {
+                        try user.save()
+                    } catch {
+                        print("user couldnt save in tax", error)
+                    }
                     print(user["username"], "amount with tax", user["payment"])
                 }
             }
@@ -103,7 +111,9 @@ class FinalBillViewController: UIViewController, UITableViewDataSource, UITableV
     
     
     func addTip(){
-        let tipPercentage = (Meal.curMeal?.tip)!
+        print("*************************now calculating tip")
+        let tipPercentage = round( 100 * (Meal.curMeal?.tip)! ) / 100
+        print("tip percentage is", tipPercentage)
         let query = PFQuery(className:"User")
         query.whereKey("parent", equalTo: (Meal.curMeal?.parseObject)!) //get all users in the meal
         query.findObjectsInBackgroundWithBlock { (mealUsers: [PFObject]?, error: NSError?) -> Void in
@@ -112,7 +122,11 @@ class FinalBillViewController: UIViewController, UITableViewDataSource, UITableV
             } else {
                 for user in mealUsers! {
                     user["payment"] = user["payment"] as! Double * (1 + tipPercentage)
-                    user.saveInBackground()
+                    do {
+                        try user.save()
+                    } catch {
+                        print("user couldnt save in tip", error)
+                    }
                     print(user["username"], "final amount with tax and tip", user["payment"])
                 }
             }
@@ -120,6 +134,8 @@ class FinalBillViewController: UIViewController, UITableViewDataSource, UITableV
             self.getFinalPayments()
         }
     }
+    
+    
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return User.allUsers.count
@@ -136,6 +152,7 @@ class FinalBillViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func getFinalPayments(){
+        print("in get final payments")
         User.allUsers.removeAll()
 
         let query = PFQuery(className:"User")

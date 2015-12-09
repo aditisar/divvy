@@ -30,6 +30,7 @@ class TaxTipViewController: UIViewController, UITextFieldDelegate {
 
     func getTotal(){
         print("in get total")
+        Meal.curMeal!.groupTotal = 0
         let query = PFQuery(className:"Dish")
         query.whereKey("meal", equalTo: (Meal.curMeal?.parseObject)!) //get all dishes with this meal
         query.findObjectsInBackgroundWithBlock { (mealDishes: [PFObject]?, error: NSError?) -> Void in
@@ -54,7 +55,7 @@ class TaxTipViewController: UIViewController, UITextFieldDelegate {
         } else {
             Meal.curMeal?.tax = Double(taxTextField.text!)!
             Meal.curMeal?.tip = Double(tipSlider.value * 0.01)
-            Meal.curMeal?.updateParseObject("tax", val: taxTextField.text! )
+            Meal.curMeal?.updateParseObject("tax", val: taxTextField.text!)
             Meal.curMeal?.updateParseObject("tip", val: tipSlider.value * 0.01)
             performSegueWithIdentifier("divvy", sender: self)
         }
