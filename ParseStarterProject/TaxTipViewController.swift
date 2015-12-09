@@ -14,7 +14,6 @@ class TaxTipViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var groupTotal: UILabel!
     @IBOutlet weak var tipSlider: UISlider!
     @IBOutlet weak var tipSliderLabel: UILabel!
-    @IBOutlet weak var roundUpSwitch: UISwitch!
     @IBOutlet weak var taxTextField: UITextField!
     
     
@@ -57,7 +56,6 @@ class TaxTipViewController: UIViewController, UITextFieldDelegate {
             Meal.curMeal?.tip = Double(tipSlider.value * 0.01)
             Meal.curMeal?.updateParseObject("tax", val: taxTextField.text! )
             Meal.curMeal?.updateParseObject("tip", val: tipSlider.value * 0.01)
-            Meal.curMeal?.updateParseObject("roundUp", val: roundUpSwitch.on)
             performSegueWithIdentifier("divvy", sender: self)
         }
     

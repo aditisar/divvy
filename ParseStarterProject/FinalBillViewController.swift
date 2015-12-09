@@ -9,8 +9,10 @@
 import Foundation
 import Parse
 
-class FinalBillViewController: UIViewController{
+class FinalBillViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
+    
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +23,8 @@ class FinalBillViewController: UIViewController{
 
         //how to calculate cost for each user:
         
-        //each user's subtotal starts at the total cost of their all of their own dishes
+        //look through each dish , if it has one user, add the cost of the dish to that user's payment
+        //otherwise iterate thru list of it's users and add the split cost to each
         //then for each of the split dishes, increment the appropriate user's subtotal
         //then look at the tax. figure out what percentage of the bill is tax. then multiply each users total by that +1
         //then multiply each user's total by the tip percentage + 1
@@ -76,12 +79,13 @@ class FinalBillViewController: UIViewController{
         
     }
     
+    
+    
     func addTax() {
         let taxPercentage = (Meal.curMeal?.tax)! / (Meal.curMeal?.groupTotal)!
         let query = PFQuery(className:"User")
         query.whereKey("parent", equalTo: (Meal.curMeal?.parseObject)!) //get all users in the meal
         query.findObjectsInBackgroundWithBlock { (mealUsers: [PFObject]?, error: NSError?) -> Void in
-            
             if let error = error {
                 print(error)
             } else {
@@ -94,17 +98,15 @@ class FinalBillViewController: UIViewController{
             //putting it here so doesn't mess with asynch. only happens after all users pretip has been calculated
             self.addTip()
         }
-        
-        
-
     }
+    
+    
     
     func addTip(){
         let tipPercentage = (Meal.curMeal?.tip)!
         let query = PFQuery(className:"User")
         query.whereKey("parent", equalTo: (Meal.curMeal?.parseObject)!) //get all users in the meal
         query.findObjectsInBackgroundWithBlock { (mealUsers: [PFObject]?, error: NSError?) -> Void in
-            
             if let error = error {
                 print(error)
             } else {
@@ -115,9 +117,40 @@ class FinalBillViewController: UIViewController{
                 }
             }
             //putting it here so doesn't mess with asynch. only happens after all everything has been calculated
-           // tableview.reloadTable();
+            self.getFinalPayments()
         }
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return User.allUsers.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("subtotalCell", forIndexPath: indexPath) as! UITableViewCell
+        let username = String(User.allUsers[indexPath.item]["username"])
+        var payment = User.allUsers[indexPath.item]["payment"] as! Double
+        payment = round( 100 * payment ) / 100
+        cell.textLabel?.text = String(format:"\(username)    $%.2f", payment
+        )
+        return cell
+    }
+    
+    func getFinalPayments(){
+        User.allUsers.removeAll()
+
+        let query = PFQuery(className:"User")
+        query.whereKey("parent", equalTo: (Meal.curMeal?.parseObject)!) //get all users in the meal
+        query.findObjectsInBackgroundWithBlock { (mealUsers: [PFObject]?, error: NSError?) -> Void in
+            if let error = error {
+                print(error)
+            } else {
+                for user in mealUsers! {
+                    User.allUsers.append(user)
+                }
+                
+                self.tableView.reloadData()
+            }
+        }
+    }
     
 }
