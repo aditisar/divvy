@@ -63,19 +63,16 @@ class FinalBillViewController: UIViewController, UITableViewDataSource, UITableV
                                 
                             //}
                         }
+                        //if finished with the last dish, then call add tax
+                        //has to be here because of asynchronousness - needs to be inside innermost background query
                         if (index == mealDishes!.count - 1){
                             self.addTax()
                         }
-
-                    }
+                    } //end of users query
                 }
-
-
-                
             } else {
                 print(error)
             }
-
         } //end of dish query
 
     }
@@ -83,8 +80,7 @@ class FinalBillViewController: UIViewController, UITableViewDataSource, UITableV
     
     
     func addTax() {
-        print("*************************now calculating tax")
-        
+        print("************************* Now calculating tax")
         let taxPercentage = (Meal.curMeal?.tax)! / (Meal.curMeal?.groupTotal)!
         print("tax percentage is", taxPercentage)
         let query = PFQuery(className:"User")
@@ -111,7 +107,7 @@ class FinalBillViewController: UIViewController, UITableViewDataSource, UITableV
     
     
     func addTip(){
-        print("*************************now calculating tip")
+        print("************************* Now calculating tip")
         let tipPercentage = round( 100 * (Meal.curMeal?.tip)! ) / 100
         print("tip percentage is", tipPercentage)
         let query = PFQuery(className:"User")

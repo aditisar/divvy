@@ -1420,9 +1420,6 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Add Dish"/>
-                                <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="-31" y="-60" width="62" height="30"/>
-                                </variation>
                                 <connections>
                                     <action selector="addSharedDish:" destination="BWQ-VA-cSh" eventType="touchUpInside" id="DDI-0w-Tgx"/>
                                 </connections>
@@ -1452,9 +1449,6 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Q3T-rr-FYX">
                                                     <rect key="frame" x="-25" y="-15" width="51" height="31"/>
                                                     <animations/>
-                                                    <variation key="heightClass=regular" misplaced="YES">
-                                                        <rect key="frame" x="163" y="6.5" width="51" height="31"/>
-                                                    </variation>
                                                 </switch>
                                             </subviews>
                                             <animations/>
@@ -1505,8 +1499,7 @@
                                         <exclude reference="chS-8t-3lT"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="-137.5" y="-340" width="275" height="250"/>
+                                <variation key="heightClass=regular">
                                     <mask key="constraints">
                                         <include reference="F4t-uq-8FK"/>
                                         <include reference="chS-8t-3lT"/>
@@ -1523,9 +1516,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="-85.5" y="-385.5" width="171" height="20.5"/>
-                                </variation>
                             </label>
                         </subviews>
                         <animations/>
@@ -1635,8 +1625,7 @@
                                         <exclude reference="zqI-t4-y68"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="265" width="600" height="70"/>
+                                <variation key="heightClass=regular">
                                     <mask key="subviews">
                                         <include reference="Wja-VZ-MA2"/>
                                         <include reference="j3c-YM-Vek"/>
@@ -1669,9 +1658,6 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="352" width="600" height="173"/>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="uqj-tc-WmS" id="ncd-uf-2mG"/>
                                     <outlet property="delegate" destination="uqj-tc-WmS" id="R50-qZ-VIa"/>
@@ -1680,9 +1666,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBS-jn-TiF">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <animations/>
-                                <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="558" y="289" width="22" height="22"/>
-                                </variation>
                                 <connections>
                                     <action selector="showPopover:" destination="uqj-tc-WmS" eventType="touchUpInside" id="aVb-Ye-Vb8"/>
                                 </connections>
@@ -1691,9 +1674,6 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Continue"/>
-                                <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="269" y="550" width="62" height="30"/>
-                                </variation>
                                 <connections>
                                     <action selector="sharedDishesContinueButtonTapped:" destination="uqj-tc-WmS" eventType="touchUpInside" id="reO-x7-5HK"/>
                                 </connections>
@@ -1744,8 +1724,7 @@
                                         <exclude reference="okL-oJ-E10"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="20" width="600" height="245"/>
+                                <variation key="heightClass=regular">
                                     <mask key="subviews">
                                         <include reference="mUL-Io-PnO"/>
                                     </mask>
@@ -1868,7 +1847,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ixg-Sg-wUz"/>
+        <segue reference="b76-SL-F3P"/>
         <segue reference="URu-b2-qJQ"/>
         <segue reference="acj-jE-xI0"/>
     </inferredMetricsTieBreakers>
