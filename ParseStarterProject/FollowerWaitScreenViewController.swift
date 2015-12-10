@@ -27,6 +27,7 @@ class FollowerWaitScreenViewController: UIViewController{
             if error == nil && meal != nil {
                 let status = meal!["stage"] as! Int
                 if (status == Meal.FinishedCalculations) {
+                    print("meal final stage reached")
                     self.finalStageReached()
                 }
             } else {
@@ -35,8 +36,11 @@ class FollowerWaitScreenViewController: UIViewController{
         }
     }
     
+    
     func finalStageReached() {
-        performSegueWithIdentifier("showPopover", sender: self)
+        print("invldated timer calle segue")
+        checkMealStageTimer?.invalidate()
+        performSegueWithIdentifier("showFollowerFinalBill", sender: self)
     }
 
     

@@ -14,6 +14,7 @@
 		49405BD21C16691200FEB91A /* AddSharedDishesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49405BD11C16691200FEB91A /* AddSharedDishesViewController.swift */; };
 		49405BD41C168C4200FEB91A /* WhichUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49405BD31C168C4200FEB91A /* WhichUsersViewController.swift */; };
 		49405BD61C17324500FEB91A /* WhoSharedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49405BD51C17324500FEB91A /* WhoSharedCell.swift */; };
+		495D1A721C194018007AEFCB /* FollowerFinalBillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495D1A711C194018007AEFCB /* FollowerFinalBillViewController.swift */; };
 		496CEA371C176D500077A918 /* FollowerWaitScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496CEA361C176D500077A918 /* FollowerWaitScreenViewController.swift */; };
 		496CEA391C17818C0077A918 /* FinalBillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496CEA381C17818C0077A918 /* FinalBillViewController.swift */; };
 		49DFFE011C13870B00C3121D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFFE001C13870B00C3121D /* User.swift */; };
@@ -40,6 +41,7 @@
 		49405BD11C16691200FEB91A /* AddSharedDishesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSharedDishesViewController.swift; sourceTree = "<group>"; };
 		49405BD31C168C4200FEB91A /* WhichUsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhichUsersViewController.swift; sourceTree = "<group>"; };
 		49405BD51C17324500FEB91A /* WhoSharedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhoSharedCell.swift; sourceTree = "<group>"; };
+		495D1A711C194018007AEFCB /* FollowerFinalBillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerFinalBillViewController.swift; sourceTree = "<group>"; };
 		496CEA361C176D500077A918 /* FollowerWaitScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerWaitScreenViewController.swift; sourceTree = "<group>"; };
 		496CEA381C17818C0077A918 /* FinalBillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalBillViewController.swift; sourceTree = "<group>"; };
 		49DFFE001C13870B00C3121D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
+				495D1A711C194018007AEFCB /* FollowerFinalBillViewController.swift */,
 				49DFFE001C13870B00C3121D /* User.swift */,
 				49DFFE021C13871400C3121D /* Meal.swift */,
 				49DFFE041C1387D400C3121D /* UploadReceiptViewController.swift */,
@@ -249,6 +252,7 @@
 				49DFFE031C13871400C3121D /* Meal.swift in Sources */,
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
 				496CEA371C176D500077A918 /* FollowerWaitScreenViewController.swift in Sources */,
+				495D1A721C194018007AEFCB /* FollowerFinalBillViewController.swift in Sources */,
 				49DFFE071C13880E00C3121D /* UserWillJoinViewController.swift in Sources */,
 				49405B941C15BBB500FEB91A /* TaxTipViewController.swift in Sources */,
 				49405B8C1C13A81C00FEB91A /* WaitingForMembersViewController.swift in Sources */,

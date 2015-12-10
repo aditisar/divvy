@@ -30,16 +30,11 @@ class FinalBillViewController: UIViewController, UITableViewDataSource, UITableV
         //then look at the tax. figure out what percentage of the bill is tax. then multiply each users total by that +1
         //then multiply each user's total by the tip percentage + 1
         
-        var allDishes = [PFObject]()
         
         let query = PFQuery(className:"Dish")
         query.whereKey("meal", equalTo: (Meal.curMeal?.parseObject)!) //get all dishes with this meal
         query.findObjectsInBackgroundWithBlock { (mealDishes: [PFObject]?, error: NSError?) -> Void in
             if error == nil && mealDishes != nil {
-                allDishes += mealDishes!
-                print("mealDishes::::", allDishes)
-                let
-                numDishes = mealDishes!.count
             
                 for (index,dish) in mealDishes!.enumerate(){
                     let cost = dish["cost"] as! Double
@@ -163,7 +158,12 @@ class FinalBillViewController: UIViewController, UITableViewDataSource, UITableV
                 
                 self.tableView.reloadData()
             }
+        self.setMealToFinished()
         }
+    }
+    
+    func setMealToFinished() {
+        Meal.curMeal?.updateParseObject("stage", val: Meal.FinishedCalculations)
     }
     
 }

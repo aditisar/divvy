@@ -50,12 +50,12 @@ class WaitingForMembersViewController: UIViewController, UITableViewDataSource, 
                 User.allUsers.append(user)
                 self.usernames.append(user["username"] as! String)
             }
+            self.tableview.reloadData()
             if (self.usernames.count > 1) {self.readyToBeginButton.enabled = true} //TODO Make 1 when finished debugging
         }
         joinedMemberCount.text = String(usernames.count) + " member(s) have joined your party"
         print("usernames",usernames)
     
-        tableview.reloadData()
     }
 
     //function to check what stage the cloud meal is at
