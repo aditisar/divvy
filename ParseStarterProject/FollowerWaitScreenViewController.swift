@@ -21,11 +21,13 @@ class FollowerWaitScreenViewController: UIViewController{
     }
     
     func checkMealStage(){
+        print("checking meal stage")
         let query = PFQuery(className:"Meal")
         query.getObjectInBackgroundWithId((Meal.curMeal?.parseId)!) {
             (meal: PFObject?, error: NSError?) -> Void in
             if error == nil && meal != nil {
                 let status = meal!["stage"] as! Int
+                print("status", status)
                 if (status == Meal.FinishedCalculations) {
                     print("meal final stage reached")
                     self.finalStageReached()

@@ -15,6 +15,7 @@ class FollowerFinalBillViewController: UIViewController, UITableViewDataSource, 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var totalLabel: UILabel!
     
+    @IBOutlet weak var screenshotButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +54,31 @@ class FollowerFinalBillViewController: UIViewController, UITableViewDataSource, 
         )
         return cell
         
+    }
+    
+    @IBAction func startOver(sender: AnyObject) {
+        performSegueWithIdentifier("followerStartOver", sender: self)
+    }
+    
+    
+    @IBAction func saveScreenshot(sender: AnyObject) {
+        screenShotMethod()
+        screenshotButton.enabled = false
+        screenshotButton.setTitle("saved!", forState: .Disabled)
+        screenshotButton.backgroundColor = UIColor(red:0.60, green:0.60, blue:0.80, alpha:1.0)
+    }
+    
+    //http://stackoverflow.com/questions/25448879/how-to-take-full-screen-screenshot-in-swift
+    func screenShotMethod() {
+        let layer = UIApplication.sharedApplication().keyWindow!.layer
+        let scale = UIScreen.mainScreen().scale
+        UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale);
+        
+        layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let screenshot = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        UIImageWriteToSavedPhotosAlbum(screenshot, nil, nil, nil)
     }
     
 }
