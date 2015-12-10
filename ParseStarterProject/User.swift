@@ -25,7 +25,7 @@ class User {
     var parseObject: PFObject?
     var meal: PFObject?
     var dishes: [Dish]
-    
+    var isFinishedEnteringDishes = false
     
     init(username: String) {
         
@@ -45,6 +45,7 @@ class User {
         parseUser["isLeader"] = self.isLeader
         parseUser["stage"] = self.stage
         parseUser["payment"] = self.payment
+        parseUser["isFinishedEnteringDishes"] = self.isFinishedEnteringDishes
         
         //if there's a meal associated with it already
         if let meal = self.meal {

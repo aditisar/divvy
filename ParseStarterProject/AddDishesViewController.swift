@@ -84,6 +84,7 @@ class AddDishesViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     }
     
     @IBAction func ownDishesContinueButtonTapped(sender: AnyObject) {
+        User.curUser?.updateParseObject("isFinishedEnteringDishes", val: true)
         if (User.curUser?.isLeader == true){
             performSegueWithIdentifier("leaderFinishedAddingDishes", sender: self)
         } else {

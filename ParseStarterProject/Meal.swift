@@ -25,6 +25,7 @@ class Meal {
     var tip = 0.0
     var tax = 0.0
     var stage = 0
+    var numUsers = 0
     
     init(groupCode: String) {
         //initialize local variables

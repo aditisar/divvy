@@ -50,7 +50,7 @@ class WaitingForMembersViewController: UIViewController, UITableViewDataSource, 
                 User.allUsers.append(user)
                 self.usernames.append(user["username"] as! String)
             }
-            if (self.usernames.count > 0) {self.readyToBeginButton.enabled = true} //TODO Make 1 when finished debugging
+            if (self.usernames.count > 1) {self.readyToBeginButton.enabled = true} //TODO Make 1 when finished debugging
         }
         joinedMemberCount.text = String(usernames.count) + " member(s) have joined your party"
         print("usernames",usernames)
@@ -89,11 +89,11 @@ class WaitingForMembersViewController: UIViewController, UITableViewDataSource, 
     @IBAction func readyToBeginPressed(sender: UIButton) {
         getUsernamesTimer!.invalidate() //stop the usernames timer
         if let _ = checkMealStageTimer {
-            checkMealStageTimer!.invalidate() //stop the stage timer if it was instantiated in the first place
-        } else { //if the leader physically pressed it
+            checkMealStageTimer!.invalidate() //stop the stage timer if it was instantiated in the first place bc you are a follower
+        } else { //if the you are a leader
             Meal.curMeal?.updateParseObject("stage", val: Meal.BeginAddingDishes)
         }
-        
+        Meal.curMeal?.numUsers = usernames.count
         Meal.curMeal?.stage = Meal.BeginAddingDishes // 1
         self.performSegueWithIdentifier("beginAddingDishes", sender: self)
     }
