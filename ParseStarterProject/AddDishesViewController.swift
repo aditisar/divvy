@@ -9,6 +9,7 @@
 import Foundation
 import Parse
 
+@available(iOS 8.0, *)
 class AddDishesViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate{
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -63,20 +64,31 @@ class AddDishesViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     @IBAction func addDishTapped(sender: AnyObject) {
         if (dishNameTextField.text != "" && dishCostTextField.text != ""){
             
-            //local
-            let dish = Dish(name: dishNameTextField.text!, cost: Double(dishCostTextField.text!)!, meal: (Meal.curMeal?.parseObject)!)
-            dish.users.append((User.curUser?.parseObject)!)
-            Meal.curMeal?.dishes.append(dish)
-            self.tableView.reloadData()
-            print("list of local dishes for cur meal", Meal.curMeal?.dishes)
-
-            //parse
-            dish.saveToParse()
+            if let cost = Double(dishCostTextField.text!) { //if cost is a valid number
+                //local
+                let dish = Dish(name: dishNameTextField.text!, cost: cost, meal: (Meal.curMeal?.parseObject)!)
+                dish.users.append((User.curUser?.parseObject)!)
+                Meal.curMeal?.dishes.append(dish)
+                self.tableView.reloadData()
+                print("list of local dishes for cur meal", Meal.curMeal?.dishes)
+                
+                //parse
+                dish.saveToParse()
+                
+                //textfield stuff
+                dishNameTextField.text = ""
+                dishCostTextField.text = ""
+                dismissKeyboard()
             
-            //textfield stuff
-            dishNameTextField.text = ""
-            dishCostTextField.text = ""
-            dismissKeyboard()
+            } else {
+                let alertController = UIAlertController(title: "Invalid cost", message: "Cost should be a number.", preferredStyle: .Alert)
+                let cancelAction = UIAlertAction(title: "OK", style: .Cancel) { (action) in
+                    self.dishCostTextField.selectAll(self)
+                }
+                alertController.addAction(cancelAction)
+                self.presentViewController(alertController, animated: true){}
+                
+            }
         } else if (dishNameTextField.text == ""){
             dishNameTextField.becomeFirstResponder()
         } else if (dishCostTextField.text == ""){
@@ -101,7 +113,8 @@ class AddDishesViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         let cell = tableView.dequeueReusableCellWithIdentifier("dishCell", forIndexPath: indexPath) as! UITableViewCell
         print("in tableview method")
         print(Meal.curMeal?.dishes[indexPath.item].name)
-        cell.textLabel?.text = Meal.curMeal?.dishes[indexPath.item].name
+        cell.textLabel?.text = (Meal.curMeal?.dishes[indexPath.item].name)! + String(format:"    $%.2f", (Meal.curMeal?.dishes[indexPath.item].cost)!)
+
         return cell
     }
     

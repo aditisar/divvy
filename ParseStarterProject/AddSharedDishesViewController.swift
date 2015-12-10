@@ -76,23 +76,31 @@ class AddSharedDishesViewController: UIViewController, UITextFieldDelegate, UISc
     
     
     func addSharedDish(peopleWhoSharedIndices: [Int]){
-        
-        //local
-        let dish = Dish(name: dishNameTextField.text!, cost: Double(dishCostTextField.text!)!, meal: (Meal.curMeal?.parseObject)!)
-        for i in peopleWhoSharedIndices {
-            dish.users.append(User.allUsers[i])
+        if let cost = Double(dishCostTextField.text!) { //if cost is a valid number
+            //local
+            let dish = Dish(name: dishNameTextField.text!, cost: Double(dishCostTextField.text!)!, meal: (Meal.curMeal?.parseObject)!)
+            for i in peopleWhoSharedIndices {
+                dish.users.append(User.allUsers[i])
+            }
+            Meal.curMeal?.sharedDishes.append(dish)
+            self.tableView.reloadData()
+            print("list of local dishes for cur meal", Meal.curMeal?.sharedDishes)
+            
+            
+            //parse
+            dish.saveToParse()
+            
+            //textfield stuff
+            dishNameTextField.text = ""
+            dishCostTextField.text = ""
+        } else {
+            let alertController = UIAlertController(title: "Invalid cost", message: "Cost should be a number.", preferredStyle: .Alert)
+            let cancelAction = UIAlertAction(title: "OK", style: .Cancel) { (action) in
+                self.dishCostTextField.selectAll(self)
+            }
+            alertController.addAction(cancelAction)
+            self.presentViewController(alertController, animated: true){}
         }
-        Meal.curMeal?.sharedDishes.append(dish)
-        self.tableView.reloadData()
-        print("list of local dishes for cur meal", Meal.curMeal?.sharedDishes)
-
-        
-        //parse
-        dish.saveToParse()
-        
-        //textfield stuff
-        dishNameTextField.text = ""
-        dishCostTextField.text = ""
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -130,7 +138,8 @@ class AddSharedDishesViewController: UIViewController, UITextFieldDelegate, UISc
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("dishCell", forIndexPath: indexPath) as! UITableViewCell
-        cell.textLabel?.text = Meal.curMeal?.sharedDishes[indexPath.item].name
+        cell.textLabel?.text = (Meal.curMeal?.sharedDishes[indexPath.item].name)! + String(format:"    $%.2f", (Meal.curMeal?.sharedDishes[indexPath.item].cost)!)
+
         return cell
     }
     
