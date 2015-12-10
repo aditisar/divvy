@@ -1252,7 +1252,7 @@
                                     <constraint firstItem="M5V-9A-lFu" firstAttribute="leading" secondItem="1rO-2m-hfC" secondAttribute="leading" constant="27" id="RgQ-E5-1V7">
                                         <variation key="heightClass=regular" constant="20"/>
                                     </constraint>
-                                    <constraint firstItem="M5V-9A-lFu" firstAttribute="width" secondItem="1rO-2m-hfC" secondAttribute="width" multiplier="0.6" id="eOV-XR-t3o" userLabel="ex. spaghetti.width = width * .6"/>
+                                    <constraint firstItem="M5V-9A-lFu" firstAttribute="width" secondItem="1rO-2m-hfC" secondAttribute="width" multiplier="0.55" id="eOV-XR-t3o" userLabel="ex. spaghetti.width = width * .6"/>
                                     <constraint firstAttribute="height" constant="70" id="o71-gJ-BYE"/>
                                 </constraints>
                                 <variation key="default">
@@ -1651,9 +1651,6 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Q3T-rr-FYX">
                                                     <rect key="frame" x="-25" y="-15" width="51" height="31"/>
                                                     <animations/>
-                                                    <variation key="heightClass=regular" misplaced="YES">
-                                                        <rect key="frame" x="163" y="6.5" width="51" height="31"/>
-                                                    </variation>
                                                 </switch>
                                             </subviews>
                                             <animations/>
@@ -1818,7 +1815,7 @@
                                     <constraint firstItem="Wja-VZ-MA2" firstAttribute="centerY" secondItem="S4s-R6-7Mo" secondAttribute="centerY" id="LCx-E2-3Gh"/>
                                     <constraint firstAttribute="height" constant="70" id="Nkb-wv-6yN"/>
                                     <constraint firstItem="j3c-YM-Vek" firstAttribute="centerY" secondItem="S4s-R6-7Mo" secondAttribute="centerY" id="nLa-Fk-YiU"/>
-                                    <constraint firstItem="j3c-YM-Vek" firstAttribute="width" secondItem="S4s-R6-7Mo" secondAttribute="width" multiplier="0.5" id="zqI-t4-y68" userLabel="ex. spaghetti.width = width * .6"/>
+                                    <constraint firstItem="j3c-YM-Vek" firstAttribute="width" secondItem="S4s-R6-7Mo" secondAttribute="width" multiplier="0.55" id="zqI-t4-y68" userLabel="ex. spaghetti.width = width * .6"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
@@ -2403,8 +2400,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="acj-jE-xI0"/>
-        <segue reference="URu-b2-qJQ"/>
+        <segue reference="ufX-Qc-maB"/>
         <segue reference="b76-SL-F3P"/>
+        <segue reference="URu-b2-qJQ"/>
     </inferredMetricsTieBreakers>
 </document>
