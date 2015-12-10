@@ -102,6 +102,7 @@ class FinalBillViewController: UIViewController, UITableViewDataSource, UITableV
     
     
     func addTip(){
+        var total = 0.0;
         print("************************* Now calculating tip")
         let tipPercentage = round( 100 * (Meal.curMeal?.tip)! ) / 100
         print("tip percentage is", tipPercentage)
@@ -119,6 +120,8 @@ class FinalBillViewController: UIViewController, UITableViewDataSource, UITableV
                         print("user couldnt save in tip", error)
                     }
                     print(user["username"], "final amount with tax and tip", user["payment"])
+                    total += user["payment"] as! Double
+                    self.totalLabel.text = String(format:"$%.2f", total)
                 }
             }
             //putting it here so doesn't mess with asynch. only happens after all everything has been calculated
@@ -137,8 +140,7 @@ class FinalBillViewController: UIViewController, UITableViewDataSource, UITableV
         let username = String(User.allUsers[indexPath.item]["username"])
         var payment = User.allUsers[indexPath.item]["payment"] as! Double
         payment = round( 100 * payment ) / 100
-        cell.textLabel?.text = String(format:"\(username)    $%.2f", payment
-        )
+        cell.textLabel?.text = String(format:"\(username)    $%.2f", payment)
         return cell
     }
     

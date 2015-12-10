@@ -19,6 +19,7 @@ class UserWillJoinViewController: UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         codeTextField.keyboardType = UIKeyboardType.NumberPad
+        codeTextField.becomeFirstResponder()
     }
     
     

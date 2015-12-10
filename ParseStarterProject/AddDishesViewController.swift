@@ -76,6 +76,7 @@ class AddDishesViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             //textfield stuff
             dishNameTextField.text = ""
             dishCostTextField.text = ""
+            dismissKeyboard()
         } else if (dishNameTextField.text == ""){
             dishNameTextField.becomeFirstResponder()
         } else if (dishCostTextField.text == ""){

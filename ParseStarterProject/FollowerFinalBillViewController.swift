@@ -23,15 +23,18 @@ class FollowerFinalBillViewController: UIViewController, UITableViewDataSource, 
     
     func getSubtotals(){ //look through all users and display their payments
         User.allUsers.removeAll()
+        var total = 0.0
         let query = PFQuery(className:"User")
         query.whereKey("parent", equalTo: (Meal.curMeal?.parseObject)!) //get all dishes with this meal
         query.findObjectsInBackgroundWithBlock { (users: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 for user in users! {
                     User.allUsers.append(user)
+                    total += user["payment"] as! Double
                 }
                 print(User.allUsers)
                 self.tableView.reloadData()
+                self.totalLabel.text = String(format:"$%.2f", total)
             }
         }
     }
