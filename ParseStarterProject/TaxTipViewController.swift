@@ -9,6 +9,7 @@
 import Foundation
 import Parse
 
+@available(iOS 8.0, *)
 class TaxTipViewController: UIViewController, UITextFieldDelegate {
     
     var checkIfAllDishesEntered: NSTimer?
@@ -82,15 +83,29 @@ class TaxTipViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func calculateAmountsPressed(sender: AnyObject) {
+        
+        
         if taxTextField.text == "" {
             taxTextField.becomeFirstResponder()
         } else {
-            Meal.curMeal?.tax = Double(taxTextField.text!)!
-            Meal.curMeal?.tip = Double(tipSlider.value * 0.01)
-            Meal.curMeal?.updateParseObject("tax", val: taxTextField.text!)
-            Meal.curMeal?.updateParseObject("tip", val: tipSlider.value * 0.01)
-            checkIfAllDishesEntered!.invalidate()
-            performSegueWithIdentifier("divvy", sender: self)
+            
+            if let tax = Double(taxTextField.text!) {
+                Meal.curMeal?.tax = Double(taxTextField.text!)!
+                Meal.curMeal?.tip = Double(tipSlider.value * 0.01)
+                Meal.curMeal?.updateParseObject("tax", val: taxTextField.text!)
+                Meal.curMeal?.updateParseObject("tip", val: tipSlider.value * 0.01)
+                checkIfAllDishesEntered!.invalidate()
+                performSegueWithIdentifier("divvy", sender: self)
+            
+            } else {
+                let alertController = UIAlertController(title: "Invalid tax", message: "Tax should be a number.", preferredStyle: .Alert)
+                let cancelAction = UIAlertAction(title: "OK", style: .Cancel) { (action) in
+                    self.taxTextField.selectAll(self)
+                }
+                alertController.addAction(cancelAction)
+                self.presentViewController(alertController, animated: true){}
+            }
+
         }
     
     }

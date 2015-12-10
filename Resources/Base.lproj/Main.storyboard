@@ -354,7 +354,7 @@
                                 <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="261.5" y="463" width="77" height="16"/>
+                                    <rect key="frame" x="261" y="463" width="77" height="16"/>
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="luA-c1-8eQ">
@@ -388,7 +388,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="238.5" y="235.5" width="123.5" height="20.5"/>
+                                    <rect key="frame" x="238" y="235" width="123.5" height="20.5"/>
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ah9-OH-RXA">
@@ -397,7 +397,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <state key="normal" title="+"/>
                                 <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="284.5" y="264" width="31" height="72"/>
+                                    <rect key="frame" x="284" y="264" width="31" height="72"/>
                                 </variation>
                                 <connections>
                                     <action selector="takePicture:" destination="pav-aW-hxG" eventType="touchUpInside" id="7bJ-cH-qHA"/>
@@ -1615,7 +1615,8 @@
                                         <exclude reference="tE2-RO-eDL"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular">
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="-50" y="-65" width="100" height="35"/>
                                     <mask key="constraints">
                                         <include reference="PuL-sg-qBo"/>
                                         <include reference="tE2-RO-eDL"/>
@@ -1650,6 +1651,9 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Q3T-rr-FYX">
                                                     <rect key="frame" x="-25" y="-15" width="51" height="31"/>
                                                     <animations/>
+                                                    <variation key="heightClass=regular" misplaced="YES">
+                                                        <rect key="frame" x="163" y="6.5" width="51" height="31"/>
+                                                    </variation>
                                                 </switch>
                                             </subviews>
                                             <animations/>
@@ -1700,7 +1704,8 @@
                                         <exclude reference="chS-8t-3lT"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular">
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="-137.5" y="-345" width="275" height="250"/>
                                     <mask key="constraints">
                                         <include reference="F4t-uq-8FK"/>
                                         <include reference="chS-8t-3lT"/>
@@ -1717,6 +1722,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="-85.5" y="-390.5" width="171" height="20.5"/>
+                                </variation>
                             </label>
                         </subviews>
                         <animations/>
