@@ -14,12 +14,9 @@ class User {
     
     static var curUser: User?
     static var allUsers = [PFObject]()
-    //stages of where the user is in the process
-    static let UserJoining = 0 , UserJoined = 1, UserDishesSaved = 2, UserSharedDishesRemoved = 3
 
     var username: String
     var isLeader: Bool
-    var stage = 0;
     var payment = 0.0;
     var parseId: String?
     var parseObject: PFObject?
@@ -31,7 +28,6 @@ class User {
         
         self.username = username
         self.isLeader = false
-        self.stage = User.UserJoining
         self.payment = 0.0
         
         dishes = [Dish]()
@@ -43,7 +39,6 @@ class User {
         let parseUser = PFObject(className: "User")
         parseUser["username"] = self.username
         parseUser["isLeader"] = self.isLeader
-        parseUser["stage"] = self.stage
         parseUser["payment"] = self.payment
         parseUser["isFinishedEnteringDishes"] = self.isFinishedEnteringDishes
         
@@ -51,10 +46,6 @@ class User {
         if let meal = self.meal {
             parseUser["parent"] = meal
         }
-//        //if it has been saved before
-//        if let id = self.parseId {
-//            parseUser["objectId"] = id
-//        }
         return parseUser
     }
     

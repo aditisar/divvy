@@ -354,7 +354,7 @@
                                 <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="261" y="463" width="77" height="16"/>
+                                    <rect key="frame" x="261.5" y="463" width="77" height="16"/>
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="luA-c1-8eQ">
@@ -388,7 +388,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="238" y="235" width="123.5" height="20.5"/>
+                                    <rect key="frame" x="238.5" y="235.5" width="123.5" height="20.5"/>
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ah9-OH-RXA">
@@ -397,7 +397,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <state key="normal" title="+"/>
                                 <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="284" y="264" width="31" height="72"/>
+                                    <rect key="frame" x="284.5" y="264" width="31" height="72"/>
                                 </variation>
                                 <connections>
                                     <action selector="takePicture:" destination="pav-aW-hxG" eventType="touchUpInside" id="7bJ-cH-qHA"/>
@@ -1651,6 +1651,9 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Q3T-rr-FYX">
                                                     <rect key="frame" x="-25" y="-15" width="51" height="31"/>
                                                     <animations/>
+                                                    <variation key="heightClass=regular" misplaced="YES">
+                                                        <rect key="frame" x="163" y="6.5" width="51" height="31"/>
+                                                    </variation>
                                                 </switch>
                                             </subviews>
                                             <animations/>
@@ -2121,6 +2124,9 @@
                                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                     <animations/>
                                                     <state key="normal" title="charge on venmo"/>
+                                                    <variation key="heightClass=regular" misplaced="YES">
+                                                        <rect key="frame" x="81" y="5" width="119" height="30"/>
+                                                    </variation>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="subtotal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNR-nx-RO7">
                                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -2400,8 +2406,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ufX-Qc-maB"/>
         <segue reference="b76-SL-F3P"/>
         <segue reference="URu-b2-qJQ"/>
+        <segue reference="acj-jE-xI0"/>
     </inferredMetricsTieBreakers>
 </document>
